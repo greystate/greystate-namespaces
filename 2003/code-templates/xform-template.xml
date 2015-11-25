@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xforms-def xmlns:frm="http://www.w3.org/2002/xforms/cr">
+
+	<frm:model id="templatebuilder">
+		<frm:instance>
+			<tplcode />
+			<tplname />
+			<tplcontent />
+			<tplcategory />
+		</frm:instance>
+		<frm:submission action="" method="post" id="" />
+	</frm:model>
+	
+	<layout>
+		
+		<frm:select ref="tplcategory">
+			<frm:label>Select categories</frm:label>
+			<frm:choices>
+				<frm:item>
+					<frm:label>#default</frm:label>
+					<frm:value>#default</frm:value>
+				</frm:item>
+				<!-- Populated dynamically -->
+			</frm:choices>
+		</frm:select>
+
+		<frm:submit submission="">
+			<frm:label>Send form</frm:label>
+		</frm:submit>
+	
+	</layout>
+</xforms-def>

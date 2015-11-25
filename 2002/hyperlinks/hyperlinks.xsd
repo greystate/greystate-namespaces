@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		hyperlinks.xsd
+	Author:		Chriztian Steinmeier
+	Created:	2002-08-24
+	RCS-Id
+		$Id: hyperlinks.xsd,v 1.2 2003-07-29 03:01:17+02 chriz Exp chriz $
+	Description
+		XMLSchema for the hyperlinks XML format.
+
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2002/hyperlinks"
+	xmlns="http://xmlns.greystate.dk/2002/hyperlinks"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				A simple XML Application keeping track of great links to cool sites.
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix is <var>hyp</var> eg. <code>&lt;hyp:hyperlink&gt;...&lt;/hyp:hyperlink&gt;</code>
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->
+	<xsd:element name="hyperlinks">
+    	<xsd:complexType>
+			<xsd:group ref="contents" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:group name="contents">
+		<xsd:choice>
+			<xsd:element ref="category" minOccurs="1" maxOccurs="1" />
+			<xsd:element ref="hyperlink" minOccurs="1" maxOccurs="1"/>
+		</xsd:choice>
+	</xsd:group>
+
+	<xsd:element name="hyperlink">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Contains the data for a single hyperlink resource.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+
+		<xsd:complexType>
+	       	<xsd:sequence>
+	           	<xsd:element ref="name" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="url" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="description" minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+
+			<xsd:attribute name="new" use="optional">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="yes" />
+						<xsd:enumeration value="no" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="owner" type="xsd:string" use="optional" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="category">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Used for grouping several hyperlinks under the same heading.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+		        <xsd:element ref="hyperlink" minOccurs="0" maxOccurs="unbounded" />
+	        </xsd:sequence>
+
+			<xsd:attribute name="name" type="xsd:string" use="required" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="name" type="xsd:string" />
+	<xsd:element name="url" type="xsd:anyURI" />
+	<xsd:element name="description" type="xsd:string" />
+		
+</xsd:schema>

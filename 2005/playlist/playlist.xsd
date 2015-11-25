@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		playlist.xsd								
+	Author:		Chriztian Steinmeier					
+	Created:	2005-03-30		
+	RCS-Id		
+		$Id: playlist.xsd,v 1.2 2005-03-30 03:10:10+02 chriz Exp chriz $
+	Description
+		XMLSchema for a generic media playlist.
+		
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2005/playlist"
+	xmlns="http://xmlns.greystate.dk/2005/playlist"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				XMLSchema for a generic media playlist.
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->	
+	<xsd:element name="playlist">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="title" />
+				<xsd:element ref="creator" />
+				<xsd:element ref="info" />
+				<xsd:element ref="trackList" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="trackList">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="track" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="track">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="location" />
+				<xsd:element ref="image" />
+				<xsd:element ref="annotation" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="title" type="xsd:string" />
+	<xsd:element name="creator" type="xsd:string" />
+	<xsd:element name="info" type="xsd:anyURI">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					<acronym title="Uniform Resource Locator">URI</acronym> pointing to further information about the contents of this playlist.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:element name="location" type="xsd:anyURI" />
+	<xsd:element name="image" type="xsd:anyURI" />
+	<xsd:element name="annotation" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Short description - title of track. Typically for display in a <acronym title="Graphical User-Interface">GUI</acronym> on the client.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	
+</xsd:schema>

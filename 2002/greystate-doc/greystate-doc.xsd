@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		greystate-doc.xsd								
+	Author:		Chriztian Steinmeier					
+	Created:	2002-08-24		
+	RCS-Id		
+		$Id: greystate-doc.xsd,v 1.0 2002-11-20 01:11:39+01 chriz Exp chriz $
+	Description
+		XMLSchema for the greystate-doc XML formats.
+		
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2002/greystate-doc"
+	xmlns="http://xmlns.greystate.dk/2002/greystate-doc"
+>
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				The namespace for my site's various files.
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:include schemaLocation="greystate-doc-site.xsd" />
+	<xsd:include schemaLocation="greystate-doc-page.xsd" />
+	
+</xsd:schema>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		namespaces.xml								
+	Author:		Chriztian Steinmeier					
+	Created:	2002-04-24								
+		
+-->	
+<namespaces>
+
+	<namespace url="http://xmlns.greystate.dk/2002/insectbase">
+		<schemaLocation>http://xmlns.greystate.dk/2002/insectbase/insectbase.xsd</schemaLocation>
+	</namespace>
+
+	<namespace url="http://xmlns.greystate.dk/2002/hyperlinks">
+		<schemaLocation>http://xmlns.greystate.dk/2002/hyperlinks/hyperlinks.xsd</schemaLocation>
+	</namespace>
+
+	<namespace url="http://xmlns.greystate.dk/2002/greystate-doc">
+		<schemaLocation>http://xmlns.greystate.dk/2002/greystate-doc/greystate-doc.xsd</schemaLocation>
+	</namespace>
+
+	<namespace url="http://xmlns.greystate.dk/2002/object-descriptor">
+		<schemaLocation>http://xmlns.greystate.dk/2002/object-descriptor/object-descriptor.xsd</schemaLocation>
+	</namespace>
+
+	<namespace url="http://xmlns.greystate.dk/2003/code-templates">
+		<schemaLocation>http://xmlns.greystate.dk/2003/code-templates/code-templates.xsd</schemaLocation>
+	</namespace>
+
+	<namespace url="http://xmlns.greystate.dk/2003/cv-data">
+		<schemaLocation>http://xmlns.greystate.dk/2003/cv-data/cv-data.xsd</schemaLocation>
+	</namespace>
+
+	<namespace url="http://xmlns.greystate.dk/2003/updates">
+		<schemaLocation>http://xmlns.greystate.dk/2003/updates/updates.xsd</schemaLocation>
+	</namespace>
+	
+	<namespace url="http://xmlns.greystate.dk/2004/recording">
+		<schemaLocation>http://xmlns.greystate.dk/2004/recording/recording.xsd</schemaLocation>
+	</namespace>
+
+	<namespace url="http://xmlns.greystate.dk/2005/mp3playa-settings">
+		<schemaLocation>http://xmlns.greystate.dk/2005/mp3playa-settings/mp3playa-settings.xsd</schemaLocation>
+	</namespace>
+	
+	<namespace url="http://xmlns.greystate.dk/2005/playlist">
+		<schemaLocation>http://xmlns.greystate.dk/2005/playlist/playlist.xsd</schemaLocation>
+	</namespace>
+	
+	<namespace url="http://xmlns.greystate.dk/2009/layout">
+		<schemaLocation>http://xmlns.greystate.dk/2009/layout/layout.xsd</schemaLocation>
+	</namespace>
+	
+	<namespace url="http://xmlns.greystate.dk/2010/demo-namespace">
+		<schemaLocation>http://xmlns.greystate.dk/2010/demo-namespace/demo-namespace.xsd</schemaLocation>
+	</namespace>
+	
+</namespaces>

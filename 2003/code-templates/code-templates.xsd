@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		code-templates.xsd								
+	Author:		Chriztian Steinmeier					
+	Created:	2002-08-24				
+	RCS-Id		
+		$Id: code-templates.xsd,v 1.1 2004-03-02 23:50:43+01 chriz Exp chriz $
+	Description
+		XMLSchema for the code-templates XML format.
+
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2003/code-templates"
+	xmlns="http://xmlns.greystate.dk/2003/code-templates"
+>
+<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				XML Application to manage Code Templates for <em>HomeSite</em> &amp; <em>ConTEXT</em>
+				programming editors.
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+<!-- Root element -->
+	<xsd:element name="code-templates">
+    	<xsd:complexType>
+        	<xsd:sequence>
+            	<xsd:element ref="template" minOccurs="1" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="template">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Contains the definition of a Code Template.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+
+		<xsd:complexType>
+	       	<xsd:sequence>
+				<xsd:element ref="code" minOccurs="1" maxOccurs="1" />
+	           	<xsd:element ref="name" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="content" minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		
+			<xsd:attribute name="category" use="required" type="xsd:NMTOKENS" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="name" type="xsd:string" />
+	<xsd:element name="code" type="xsd:string" />
+	<xsd:element name="content" type="xsd:string" />
+		
+</xsd:schema>

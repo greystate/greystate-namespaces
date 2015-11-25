@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		greystate-doc-site.xsd								
+	Author:		Chriztian Steinmeier					
+	Created:	2002-11-20		
+	RCS-Id		
+		$Id: greystate-doc-site.xsd,v 1.0 2002-11-20 01:11:39+01 chriz Exp chriz $
+	Description
+		XMLSchema for a site-definition XML file in the "greystate-doc" system
+		
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2002/greystate-doc"
+	xmlns="http://xmlns.greystate.dk/2002/greystate-doc"
+>
+	
+	<xsd:element name="greystate-doc-site">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="head-content" minOccurs="0" maxOccurs="1" />
+				<xsd:element ref="site-layout" minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="head-content">
+		<xsd:complexType>
+	    	<xsd:sequence>
+		        <xsd:element ref="stylesheets" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="scripts" minOccurs="0" maxOccurs="unbounded" />	
+	        </xsd:sequence>
+	    </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="site-layout">
+		<xsd:element name="" type="xsd:string" />
+	</xsd:element>
+	
+</xsd:schema>

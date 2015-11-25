@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2002/insectbase"
+	xmlns="http://xmlns.greystate.dk/2002/insectbase"
+>
+
+	<!-- Simple types -->
+	<xs:element name="name" type="xs:string" />
+	<xs:element name="email" type="xs:string" />
+	<xs:element name="description" type="xs:string" />
+	
+	<!-- Attributes -->
+	<xs:attribute name="id" type="xs:ID" />
+	<xs:attribute name="href" type="xs:anyURI" />
+
+	<!-- Complex types -->
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:attribute ref="id" />
+				<xs:element ref="name" />
+				<xs:element ref="email" />
+			</xs:sequence>
+	    </xs:complexType>
+	</xs:element>
+
+	<xs:element name="users">
+		<xs:complexType>
+        	<xs:element ref="user" minOccurs="1" maxOccurs="unbounded" />
+        </xs:complexType>
+	</xs:element>
+	
+	<xs:element name="insects">
+		<xs:complexType>
+        	<xs:element name="insect" minOccurs="0" maxOccurs="unbounded">
+				<xs:attribute ref="href" />
+			</xs:element>
+        </xs:complexType>
+	</xs:element>
+	
+	<xs:element name="project">
+		<xs:complexType>
+        	<xs:sequence>
+            	<xs:attribute ref="id" />
+				<xs:element ref="name" />
+				<xs:element ref="description" />
+				<xs:element ref="insects" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+	</xs:element>
+
+	<xs:element name="insectbase">
+
+	</xs:element>
+
+
+</xs:schema>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		greystate-doc-page.xsd								
+	Author:		Chriztian Steinmeier					
+	Created:	2002-11-20		
+	RCS-Id		
+		$Id: greystate-doc-page.xsd,v 1.0 2002-11-20 01:11:39+01 chriz Exp chriz $
+	Description
+		XMLSchema for pages in the "greystate-doc" system
+		
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2002/greystate-doc"
+	xmlns="http://xmlns.greystate.dk/2002/greystate-doc"
+>
+	
+	<xsd:element name="greystate-doc-page">
+		<xsd:complexType>
+        	<xsd:sequence>
+            	<xsd:element name="title" type="xsd:string" />
+				<xsd:element ref="stories" />
+            </xsd:sequence>
+		
+			<xsd:attribute name="id" type="xsd:string" />	
+        </xsd:complexType>
+	
+	</xsd:element>
+
+	<xsd:element name="stories">
+		<xsd:complexType>
+        	<xsd:sequence>
+            	<xsd:element name="story">
+					<xsd:attribute name="href" type="xsd:anyURI" />
+				</xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+		
+		<xsd:attribute name="basehref" type="xsd:anyURI" />
+	</xsd:element>
+
+	<xsd:include schemaLocation="greystate-doc-story.xsd" />
+	
+</xsd:schema>

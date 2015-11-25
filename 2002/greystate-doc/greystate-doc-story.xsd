@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		greystate-doc-story.xsd								
+	Author:		Chriztian Steinmeier					
+	Created:	2002-11-20		
+	RCS-Id		
+		$Id: greystate-doc-story.xsd,v 1.0 2002-11-28 23:44:33+01 chriz Exp chriz $
+	Description
+		XMLSchema for stories in the "greystate-doc" system
+		
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2002/greystate-doc"
+	xmlns="http://xmlns.greystate.dk/2002/greystate-doc"
+>
+	
+	<xsd:element name="greystate-doc-story">
+		<xsd:complexType>
+        	<xsd:all>
+            	<xsd:element name="p" type="xsd:string" />
+            </xsd:all>
+        </xsd:complexType>
+		<xsd:attribute name="id" type="xsd:string" />
+	</xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,82 @@
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2009/layout"
+	xmlns="http://xmlns.greystate.dk/2009/layout"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				XML Application for Prototyping Website Layouts
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix is <var>g</var> eg. <code>&lt;g:layout&gt;...&lt;/g:layout&gt;</code>
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->
+	<xsd:element name="layout">
+		<xsd:complexType>
+			<xsd:group ref="contents" minOccurs="1" maxOccurs="unbounded" />
+			
+			<xsd:attribute name="title" type="xsd:string" use="optional" />			
+			<xsd:attribute name="author" type="xsd:string" use="optional" />			
+			<xsd:attribute name="version" type="xsd:string" use="optional" />			
+			
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:group name="contents">
+		<xsd:choice>
+			<xsd:element ref="wrap" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element ref="box" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:choice>
+	</xsd:group>
+
+	<xsd:element name="wrap">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:group ref="contents" />
+			</xsd:sequence>
+			
+			<xsd:attribute name="id" type="xsd:ID" use="optional" />
+			<xsd:attribute name="layout" use="optional">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="contain" />
+						<xsd:enumeration value="center" />
+						<xsd:enumeration value="left" />
+						<xsd:enumeration value="right" />
+						<xsd:enumeration value="w25" />
+						<xsd:enumeration value="w33" />
+						<xsd:enumeration value="w50" />
+						<xsd:enumeration value="w75" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="box">
+		<xsd:complexType>
+			<xsd:attribute name="id" type="xsd:ID" use="required" />
+			<xsd:attribute name="layout" use="optional">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="contain" />
+						<xsd:enumeration value="center" />
+						<xsd:enumeration value="left" />
+						<xsd:enumeration value="right" />
+						<xsd:enumeration value="w25" />
+						<xsd:enumeration value="w33" />
+						<xsd:enumeration value="w50" />
+						<xsd:enumeration value="w75" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	
+</xsd:schema>

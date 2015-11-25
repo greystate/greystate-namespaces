@@ -1,0 +1,26 @@
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2010/demo-namespace"
+	xmlns="http://xmlns.greystate.dk/2010/demo-namespace"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Just a placeholder namespace for demonstration purposes
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix is <var>demo</var> eg. <code>&lt;demo:item&gt;...&lt;/demo:item&gt;</code>
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->
+	<xsd:element name="item">
+		<xsd:complexType>
+			<xsd:element name="p" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

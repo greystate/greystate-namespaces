@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		mp3playa-settings.xsd								
+	Author:		Chriztian Steinmeier					
+	Created:	2005-03-30		
+	RCS-Id		
+		$Id: mp3playa-settings.xsd,v 1.2 2005-03-31 03:48:12+02 chriz Exp chriz $
+	Description
+		XMLSchema for the configuration file for the "BechBox MP3Playa"
+		
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2005/mp3playa-settings"
+	xmlns="http://xmlns.greystate.dk/2005/mp3playa-settings"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				XMLSchema for the configuration file for the "BechBox MP3Playa" Flash Component.
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->
+	<xsd:element name="settings">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="welcomeMessage" />
+				<xsd:element ref="defaultPlaylist" />
+				<xsd:element ref="loadingMessage" />
+				<xsd:element ref="errorMessage" />
+				<xsd:element ref="autoplay" />
+				
+				<xsd:element ref="colors" />
+				
+				<xsd:element ref="backgroundImage" />
+				<xsd:element ref="displayBGAlpha" />
+				
+				<xsd:element ref="showVolume" />
+				
+				<xsd:element ref="buttons" />
+				
+				
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="colors">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="background" />
+				<xsd:element ref="loadTrack" />
+				<xsd:element ref="loadBar" />
+				<xsd:element ref="text" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="buttons">
+		<xsd:complexType>
+			<xsd:group ref="buttonGroup" />
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:group name="buttonGroup">
+		<xsd:annotation>
+			<xsd:documentation>
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Defines the sequence of buttons - 'pause' <em>must</em> come after <em>play</em>.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element ref="buttonWidth" />
+			<xsd:element ref="buttonHeight" />
+				
+			<xsd:element ref="backButton" />
+			<xsd:element ref="playButton" />
+			<xsd:element ref="stopButton" />
+			<xsd:element ref="nextButton" />
+			
+			<xsd:element ref="pauseButton" />
+		</xsd:all>
+	</xsd:group>
+	
+	
+	<xsd:element name="welcomeMessage" type="xsd:string" />
+	<xsd:element name="defaultPlaylist" type="xsd:anyURI" />
+	<xsd:element name="loadingMessage" type="xsd:string" />
+	<xsd:element name="errorMessage" type="xsd:string" />
+	<xsd:element name="autoplay" type="xsd:boolean" />
+	
+	<xsd:element name="background" type="colorType" />
+	<xsd:element name="loadTrack" type="colorType" />
+	<xsd:element name="loadBar" type="colorType" />
+	<xsd:element name="text" type="colorType" />
+	
+	<xsd:element name="backgroundImage" type="xsd:anyURI" />
+	<xsd:element name="displayBGAlpha">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:integer">
+				<xsd:minInclusive value="0" />
+				<xsd:maxInclusive value="100" />
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	
+	<xsd:element name="showVolume" type="xsd:boolean" />
+	
+	<xsd:element name="buttonWidth" type="xsd:integer" />
+	<xsd:element name="buttonHeight" type="xsd:integer" />
+	
+	<xsd:element name="backButton" type="buttonType" />
+	<xsd:element name="playButton" type="buttonType" />
+	<xsd:element name="stopButton" type="buttonType" />
+	<xsd:element name="nextButton" type="buttonType" />
+	<xsd:element name="pauseButton" type="buttonType" />
+
+	<xsd:complexType name="buttonType">
+		<xsd:sequence>
+			<xsd:element name="image" type="xsd:anyURI" />
+			<xsd:element name="hoverImage" type="xsd:anyURI" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="colorType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="0x[0-9A-Fa-f]{6}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+</xsd:schema>

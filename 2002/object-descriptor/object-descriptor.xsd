@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		object-descriptor.xsd					
+	Author:		Chriztian Steinmeier					
+	Created:	2002-11-25		
+	RCS-Id		
+		$Id: object-descriptor.xsd,v 1.0 2002-11-28 23:44:09+01 chriz Exp chriz $
+	Description
+		XMLSchema for Object References
+		
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2002/object-descriptor"
+	xmlns="http://xmlns.greystate.dk/2002/object-descriptor"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				The reference documents for my JSObjects and ASPObjects belong to this namespace.
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:element name="name" type="xsd:string" />
+
+	<xsd:complexType name="descriptionType">
+    	<xsd:sequence>
+			<xsd:any namespace="##any" minOccurs="1" maxOccurs="unbounded" processContents="skip" />
+		</xsd:sequence>
+    </xsd:complexType>
+	
+		
+	<xsd:group name="basics">
+		<xsd:all>
+	    	<xsd:element ref="name" />
+			<xsd:element name="description" type="descriptionType" />
+        </xsd:all>
+    </xsd:group>
+	
+	<xsd:element name="parameters">
+		<xsd:sequence>
+        	<xsd:element name="parameter">
+				<xsd:complexType>
+                	<xsd:group ref="basics" />
+                </xsd:complexType>
+			</xsd:element>
+        </xsd:sequence>
+	</xsd:element>
+	
+	<xsd:group name="params">
+		<xsd:choice>
+			<xsd:element ref="optional" />
+			<xsd:element ref="parameters" />
+		</xsd:choice>
+	</xsd:group>
+	
+	<xsd:element name="property">
+		<xsd:complexType>
+			<xsd:group ref="basics" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="method">
+		<xsd:complexType>
+        	<xsd:group ref="basics" />
+			<xsd:element ref="parameters" />
+		</xsd:complexType>
+	</xsd:element>
+	
+</xsd:schema>

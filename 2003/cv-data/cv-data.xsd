@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	File:		cv-data.xsd
+	Author:		Chriztian Steinmeier
+	Created:	2003-09-09
+	RCS-Id
+		$Id: cv-data.xsd,v 1.1 2003-09-09 11:10:17+02 chriz Exp chriz $
+	Description
+		XMLSchema for marking up misc. Curriculum Vitae data.
+
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2003/cv-data"
+	xmlns="http://xmlns.greystate.dk/2003/cv-data"
+>
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				XML Application to store CV information (references, education, skills etc.)
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix is <var>cv</var> eg. <code>&lt;cv:references&gt;...&lt;/cv:references&gt;</code>
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->
+	<xsd:element name="cv-data">
+		<xsd:complexType>
+  			<xsd:all>
+				<xsd:element ref="skills" />
+				<xsd:element ref="references" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- References section -->
+	<xsd:element name="references">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="reference" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="reference">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Contains the data for a single reference. The <code>&lt;description&gt;</code> element
+					can be repeated with different values to the <code>xml:lang</code> attribute,
+					for purposes of internationalization.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+
+		<xsd:complexType>
+	       	<xsd:sequence>
+	           	<xsd:element ref="name" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="url" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="description" minOccurs="1" maxOccurs="unbounded" />
+			</xsd:sequence>
+
+			<xsd:attribute name="technology" type="xsd:NMTOKENS" use="optional" />
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- Skills section -->
+	<xsd:element name="skills">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="skill" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="skill">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+<!-- 				<p xmlns="http://www.w3.org/1999/xhtml">
+					Contains the data for a single skill. The <code>&lt;description&gt;</code> element
+					can be repeated with different values to the <code>xml:lang</code> attribute,
+					for purposes of internationalization.
+				</p> -->
+			</xsd:documentation>
+		</xsd:annotation>
+
+		<xsd:complexType>
+	       	<xsd:sequence>
+	           	<xsd:element ref="name" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="description" minOccurs="1" maxOccurs="unbounded" />
+			</xsd:sequence>
+
+			<xsd:attribute name="level" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="high" />
+						<xsd:enumeration value="medium" />
+						<xsd:enumeration value="low" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- Generic elements -->
+	<xsd:element name="name" type="xsd:string" />
+	<xsd:element name="url" type="xsd:anyURI" />
+	<xsd:element name="description" type="xsd:string" />
+
+</xsd:schema>
