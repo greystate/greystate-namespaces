@@ -20,8 +20,54 @@
 	<!-- Root element -->
 	<xsd:element name="cards">
 		<xsd:complexType>
-			<xsd:element name="client" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:sequence>
+				<xsd:element ref="sprint" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="backlog" minOccurs="0" maxOccurs="1" />
+			</xsd:sequence>
+			<xsd:attribute name="projectId" type="xsd:string" />
 		</xsd:complexType>
 	</xsd:element>
+	
+	<xsd:element name="backlog">
+		<xsd:complexType>
+			<xsd:element ref="card" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="sprint">
+		<xsd:complexType>
+			<xsd:element ref="card" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:attribute name="id" type="xsd:string" />
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="card">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="title" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="todo" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="description" minOccurs="0" maxOccurs="1" />
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:string" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="todo" type="xsd:string">
+		<xsd:attribute name="id" type="xsd:string" />
+		<xsd:attribute name="points" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:enumeration value="1" />
+					<xsd:enumeration value="3" />
+					<xsd:enumeration value="5" />
+					<xsd:enumeration value="8" />
+					<xsd:enumeration value="13" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:element>
+
+	<xsd:element name="title" type="xsd:string" />
+	<xsd:element name="description" type="xsd:string" />
 
 </xsd:schema>
