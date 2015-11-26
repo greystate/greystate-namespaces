@@ -15,7 +15,7 @@
 	xmlns:xhtml="http://www.w3.org/1999/xhtml"
 	exclude-result-prefixes="xsl xsd xhtml"
 >
-	<xsl:output method="xml" omit-xml-declaration="yes" indent="yes" />
+	<xsl:output method="html" omit-xml-declaration="yes" indent="yes" />
 
 <!-- Parameters -->
 	<xsl:param name="namespace" />
@@ -32,15 +32,15 @@
 	<xsl:variable name="prefix"><xsl:for-each select="$schemaElement/namespace::*[. = 'http://www.w3.org/2001/XMLSchema']"><xsl:value-of select="local-name()"/></xsl:for-each></xsl:variable>
 	<xsl:variable name="xsdPrefix">
 		<xsl:choose>
-            <xsl:when test="$prefix = ''"><xsl:text></xsl:text></xsl:when>
-            <xsl:otherwise><xsl:value-of select="concat($prefix, ':')" /></xsl:otherwise>
-        </xsl:choose>
+			<xsl:when test="$prefix = ''"><xsl:text></xsl:text></xsl:when>
+			<xsl:otherwise><xsl:value-of select="concat($prefix, ':')" /></xsl:otherwise>
+		</xsl:choose>
 	</xsl:variable>
 
 <!-- Templates -->
 	<xsl:template match="/">
 		<xsl:apply-templates />
-    </xsl:template>
+	</xsl:template>
 
 	<xsl:template match="namespaces">
 		<xsl:if test="$namespace = $serverName">
@@ -70,7 +70,7 @@
 	</xsl:template>
 
 	<xsl:template match="namespace">
-    	<h2>{<code><xsl:value-of select="@url" /></code>}</h2>
+		<h2>{<code><xsl:value-of select="@url" /></code>}</h2>
 		<dl>
 			<dt>Description</dt>
 			<dd>
@@ -99,27 +99,28 @@
 				</xsl:for-each>
 			</dd>
 		</dl>
-    </xsl:template>
+	</xsl:template>
 	
 	<xsl:template match="namespace" mode="toc-mode">
 		<li><a href="{substring-after(@url, $serverName)}"><xsl:value-of select="@url" /></a></li>
 	</xsl:template>
 
 	<xsl:template match="schemaLocation">
-    	<a href="{.}" target="_blank" title="Open schema in new browser"><xsl:value-of select="." /></a>
-    </xsl:template>
+		<a href="{.}" target="_blank" title="Open schema in new browser"><xsl:value-of select="." /></a>
+	</xsl:template>
 
 <!-- XMLSchema templates -->
 	<xsl:template match="xsd:schema">
-    	<xsl:apply-templates select="xsd:element | xsd:include" />
-    </xsl:template>
+		<xsl:apply-templates select="xsd:element | xsd:include" />
+	</xsl:template>
 
 	<xsl:template match="xsd:include">
-    	<xsl:apply-templates select="document(@schemaLocation)/xsd:schema" />
-    </xsl:template>
+		<xsl:apply-templates select="document(@schemaLocation)/xsd:schema" />
+	</xsl:template>
 
 	<xsl:template match="xsd:element//xsd:attribute">
-    	<xsl:choose>
+		<xsl:text> </xsl:text>
+		<xsl:choose>
 			<xsl:when test="@ref">
 				<span class="attribute">
 					<xsl:value-of select="@ref" />=&quot;<xsl:apply-templates select="//xsd:attribute[@name = current()/@ref]"/>&quot;
@@ -131,75 +132,92 @@
 				</span>
 			</xsl:otherwise>
 		</xsl:choose>
-    </xsl:template>
+	</xsl:template>
 
 	<xsl:template match="xsd:element[@name]">
-    	<div class="elementwrapper">
-			<code>&lt;<span class="element"><xsl:value-of select="@name" /></span> <xsl:apply-templates select=".//xsd:attribute" /> /&gt;</code>
+		<div class="elementwrapper">
+			<code>
+				<xsl:text>&lt;</xsl:text>
+				<span class="element"><xsl:value-of select="@name" /></span>
+				<xsl:apply-templates select=".//xsd:attribute" />
+				<xsl:text> /&gt;</xsl:text>
+			</code>
 			<xsl:apply-templates select="xsd:simpleType | xsd:complexType | xsd:key | xsd:keyref | xsd:unique" />
-			<xsl:if test="@type"> <code><xsl:attribute name="class">typeref<xsl:if test="starts-with(@type, $xsdPrefix)"> xsdtype</xsl:if></xsl:attribute><xsl:apply-templates select="@type" /></code></xsl:if>
+			<xsl:if test="@type">
+				<xsl:text> </xsl:text>
+				<code class="typeref">
+					<xsl:if test="starts-with(@type, $xsdPrefix)"><xsl:attribute name="class">typeref xsdtype</xsl:attribute></xsl:if>
+					<xsl:text> </xsl:text>
+					<xsl:apply-templates select="@type" />
+				</code>
+			</xsl:if>
 			<xsl:apply-templates select="xsd:annotation" />
 		</div>
-    </xsl:template>
+	</xsl:template>
 
 	<xsl:template match="xsd:element[@ref]">
-    	<div class="elementwrapper">
+		<div class="elementwrapper">
 			<code><span class="element"><xsl:value-of select="@ref" /></span></code>
 		</div>
-    </xsl:template>
+	</xsl:template>
 
 	<xsl:template match="xsd:complexType">
-    	<xsl:apply-templates select="xsd:annotation | xsd:simpleContent | xsd:complexContent | xsd:group | xsd:all | xsd:choice | xsd:sequence" />
-    </xsl:template>
+		<xsl:apply-templates select="xsd:annotation | xsd:simpleContent | xsd:complexContent | xsd:group | xsd:all | xsd:choice | xsd:sequence" />
+	</xsl:template>
 
 	<xsl:template match="xsd:simpleType">
 		<xsl:apply-templates select="xsd:restriction | xsd:list | xsd:union" />
 	</xsl:template>
+
+	<xsl:template match="xsd:simpleContent">
+		
+	</xsl:template>
 	
 	<xsl:template match="xsd:sequence">
-    	(<xsl:for-each select="*"><xsl:apply-templates select="." /><xsl:if test="not(position()=last())">, </xsl:if></xsl:for-each>)
-    </xsl:template>
+		(<xsl:for-each select="*"><xsl:apply-templates select="." /><xsl:if test="not(position()=last())">, </xsl:if></xsl:for-each>)
+	</xsl:template>
 
 	<xsl:template match="xsd:choice">
 		(<xsl:for-each select="*"><xsl:apply-templates select="." /><xsl:if test="not(position()=last())"> | </xsl:if></xsl:for-each>)
-    </xsl:template>
+	</xsl:template>
 	
 	<xsl:template match="xsd:all">
 		(<xsl:for-each select="*">(<xsl:apply-templates select="." />)<b class="cardinality">?</b> <xsl:if test="not(position()=last())">, </xsl:if></xsl:for-each>)
 	</xsl:template>
 
 	<xsl:template match="xsd:choice/xsd:element[@ref] | xsd:sequence/xsd:element[@ref] | xsd:all/xsd:element[@ref]">
-    	<xsl:value-of select="@ref" /><xsl:call-template name="cardinality" />
-    </xsl:template>
+		<xsl:value-of select="@ref" /><xsl:call-template name="cardinality" />
+	</xsl:template>
 
 	<xsl:template match="xsd:group[@ref]">
-    	<span class="groupwrapper">
-        	<xsl:apply-templates select="//xsd:group[@name = current()/@ref]" /><xsl:call-template name="cardinality" />
-        </span>
-    </xsl:template>
+		<span class="groupwrapper">
+			<xsl:apply-templates select="//xsd:group[@name = current()/@ref]" /><xsl:call-template name="cardinality" />
+		</span>
+	</xsl:template>
 
 	<xsl:template match="xsd:group[@name]">
-    	<xsl:apply-templates />
-    </xsl:template>
+		<xsl:apply-templates />
+	</xsl:template>
 
 	<xsl:template match="xsd:attribute/xsd:simpleType/xsd:restriction[@base='xsd:string' or @base='xsd:integer'][xsd:enumeration]"><xsl:for-each select="xsd:enumeration"><span class="enumValue"><xsl:value-of select="@value" /></span><xsl:if test="not(position()=last())">|</xsl:if></xsl:for-each></xsl:template>
 	<xsl:template match="xsd:attribute[@type]">
+		<xsl:text> </xsl:text>
 		<span class="attribute"><xsl:value-of select="@name" />=&quot;<span class="typeref"><xsl:apply-templates select="@type" /></span>&quot;</span>
 	</xsl:template>
 	
 	<xsl:template match="xsd:documentation">
-    	<xsl:apply-templates />
-    </xsl:template>
+		<xsl:apply-templates />
+	</xsl:template>
 
 	<xsl:template match="xhtml:p">
 		<p class="documentation">
 			<xsl:apply-templates />
 		</p>
-    </xsl:template>
-    
-    <xsl:template match="xhtml:*">
+	</xsl:template>
+
+	<xsl:template match="xhtml:*">
 		<xsl:element name="{local-name()}"><xsl:apply-templates /></xsl:element>
-    </xsl:template>
+	</xsl:template>
 
 	<xsl:template match="@type">
 		<xsl:choose>
@@ -210,14 +228,14 @@
 
 <!-- Callable templates -->
 	<xsl:template name="cardinality">
-    	<xsl:if test="@minOccurs or @maxOccurs">
+		<xsl:if test="@minOccurs or @maxOccurs">
 			<xsl:choose>
-	            <xsl:when test="@minOccurs = 0 and @maxOccurs = 'unbounded'"><b class="cardinality">*</b></xsl:when>
-	            <xsl:when test="@minOccurs = 0 and @maxOccurs = 1"><b class="cardinality">?</b></xsl:when>
+				<xsl:when test="@minOccurs = 0 and @maxOccurs = 'unbounded'"><b class="cardinality">*</b></xsl:when>
+				<xsl:when test="@minOccurs = 0 and @maxOccurs = 1"><b class="cardinality">?</b></xsl:when>
 				<xsl:when test="@minOccurs = 1 and @maxOccurs = 1"></xsl:when>
 				<xsl:when test="@minOccurs = 1 and @maxOccurs = 'unbounded'"><b class="cardinality">+</b></xsl:when>
 				<xsl:otherwise><xsl:value-of select="concat('{', @minOccurs, '-', @maxOccurs, '}')" /></xsl:otherwise>
 			</xsl:choose>
 		</xsl:if>
-    </xsl:template>
+	</xsl:template>
 </xsl:stylesheet>
