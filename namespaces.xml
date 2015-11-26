@@ -55,4 +55,8 @@
 		<schemaLocation>http://xmlns.greystate.dk/2010/demo-namespace/demo-namespace.xsd</schemaLocation>
 	</namespace>
 	
+	<namespace url="http://xmlns.greystate.dk/2015/cards">
+		<schemaLocation>http://xmlns.greystate.dk/2015/cards/cards.xsd</schemaLocation>
+	</namespace>
+	
 </namespaces>
