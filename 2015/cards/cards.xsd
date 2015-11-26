@@ -59,16 +59,17 @@
 	
 	<xsd:element name="card">
 		<xsd:complexType>
-			<xsd:all>
+			<xsd:sequence>
 				<xsd:element ref="title" />
 				<xsd:element ref="todo" minOccurs="0" maxOccurs="unbounded" />
 				<xsd:element ref="description" minOccurs="0" maxOccurs="1" />
-			</xsd:all>
+			</xsd:sequence>
 			<xsd:attribute name="id" type="xsd:string" use="required" />
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="todo" type="xsd:string">
+	<xsd:element name="todo">
+		<xsd:complexType mixed="true">
 		<xsd:attribute name="id" type="xsd:string" />
 		<xsd:attribute name="done" use="optional">
 			<xsd:simpleType>
@@ -88,7 +89,8 @@
 					<xsd:enumeration value="13" />
 				</xsd:restriction>
 			</xsd:simpleType>
-		</xsd:attribute>
+		</xsd:attribute>			
+		</xsd:complexType>
 	</xsd:element>
 	
 	<xsd:element name="burns">
@@ -99,8 +101,14 @@
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="burn" type="xsd:integer">
-		<xsd:attribute name="date" type="xsd:dateTime" use="optional" />
+	<xsd:element name="burn">
+		<xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:integer">
+                    <xsd:attribute name="date" use="required" type="xsd:dateTime"/>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
 	</xsd:element>
 
 	<xsd:element name="title" type="xsd:string" />
