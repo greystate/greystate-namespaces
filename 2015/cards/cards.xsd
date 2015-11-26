@@ -44,6 +44,16 @@
 				<xsd:element ref="card" minOccurs="0" maxOccurs="unbounded" />
 			</xsd:sequence>
 			<xsd:attribute name="id" type="xsd:string" use="required" />
+			<xsd:attribute name="start" type="xsd:date" />
+			<xsd:attribute name="end" type="xsd:date" />
+			<xsd:attribute name="includeWeekends" use="optional">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="yes" />
+						<xsd:enumeration value="no" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
 		</xsd:complexType>
 	</xsd:element>
 	
