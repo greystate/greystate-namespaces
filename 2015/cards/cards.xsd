@@ -44,13 +44,24 @@
 				<xsd:element ref="card" minOccurs="0" maxOccurs="unbounded" />
 			</xsd:sequence>
 			<xsd:attribute name="id" type="xsd:string" use="required" />
-			<xsd:attribute name="start" type="xsd:date" />
-			<xsd:attribute name="end" type="xsd:date" />
+			<xsd:attribute name="name" type="xsd:string" use="required" />
+			<xsd:attribute name="start" type="xsd:date" use="required" />
+			<xsd:attribute name="end" type="xsd:date" use="required" />
+			<xsd:attribute name="workingDays" type="xsd:integer" />
 			<xsd:attribute name="includeWeekends" use="optional">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
 						<xsd:enumeration value="yes" />
 						<xsd:enumeration value="no" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="status" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="planned" />
+						<xsd:enumeration value="inprogress" />
+						<xsd:enumeration value="done" />
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>
@@ -89,8 +100,13 @@
 					<xsd:enumeration value="13" />
 				</xsd:restriction>
 			</xsd:simpleType>
-		</xsd:attribute>			
+		</xsd:attribute>
 		</xsd:complexType>
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">Contents are parsed with a simple Markdown parser.</p>
+			</xsd:documentation>
+		</xsd:annotation>
 	</xsd:element>
 	
 	<xsd:element name="burns">
@@ -103,15 +119,21 @@
 
 	<xsd:element name="burn">
 		<xsd:complexType>
-            <xsd:simpleContent>
-                <xsd:extension base="xsd:integer">
-                    <xsd:attribute name="date" use="required" type="xsd:dateTime"/>
-                </xsd:extension>
-            </xsd:simpleContent>
-        </xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:integer">
+					<xsd:attribute name="date" use="required" type="xsd:dateTime"/>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
 	</xsd:element>
 
 	<xsd:element name="title" type="xsd:string" />
-	<xsd:element name="description" type="xsd:string" />
+	<xsd:element name="description" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">Contents are parsed with a simple Markdown parser.</p>
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 
 </xsd:schema>
