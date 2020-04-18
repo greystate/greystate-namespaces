@@ -57,5 +57,9 @@
 	<namespace url="http://xmlns.greystate.dk/2015/cards">
 		<schemaLocation>http://xmlns.greystate.dk/2015/cards/cards.xsd</schemaLocation>
 	</namespace>
+
+	<namespace url="http://xmlns.greystate.dk/2020/hyperlinks">
+		<schemaLocation>http://xmlns.greystate.dk/2020/hyperlinks/hyperlinks.xsd</schemaLocation>
+	</namespace>
 	
 </namespaces>
