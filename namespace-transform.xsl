@@ -151,6 +151,7 @@
 					<xsl:apply-templates select="@type" />
 				</code>
 			</xsl:if>
+			<xsl:apply-templates select="xsd:complexType/xsd:simpleContent/xsd:extension" />
 			<xsl:apply-templates select="xsd:annotation" />
 		</div>
 	</xsl:template>
