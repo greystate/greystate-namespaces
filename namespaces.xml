@@ -61,5 +61,9 @@
 	<namespace url="http://xmlns.greystate.dk/2020/hyperlinks">
 		<schemaLocation>http://xmlns.greystate.dk/2020/hyperlinks/hyperlinks.xsd</schemaLocation>
 	</namespace>
+
+	<namespace url="http://xmlns.greystate.dk/2020/movies">
+		<schemaLocation>http://xmlns.greystate.dk/2020/movies/movies.xsd</schemaLocation>
+	</namespace>
 	
 </namespaces>

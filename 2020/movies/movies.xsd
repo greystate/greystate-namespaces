@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	File:    movies.xsd
+	Author:  Chriztian Steinmeier
+	Created: 2020-12-29
+	Description:
+		XMLSchema for the movies XML format.
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2020/movies"
+	xmlns="http://xmlns.greystate.dk/2020/movies"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				An XML application for keeping track of the movies I have seen.
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix is <var>m</var> eg. <code>&lt;m:movies&gt;...&lt;/m:movie&gt;</code>
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->
+	<xsd:element name="movies">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="movie" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="movie">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Contains a single movie with title and IMDb reference etc.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="title" minOccurs="1" maxOccurs="unbounded" />
+				<xsd:element ref="ticket" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+			
+			<xsd:attribute name="rating" use="optional">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:enumeration value="1" />
+						<xsd:enumeration value="2" />
+						<xsd:enumeration value="3" />
+						<xsd:enumeration value="4" />
+						<xsd:enumeration value="5" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			
+			<xsd:attribute name="imdb" type="xsd:string" use="optional">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="tt[0-9]{7,}" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			
+			<xsd:attribute name="year" type="xsd:gYear" use="required" />
+			<xsd:attribute name="seenthat" type="xsd:integer" use="optional" />
+			
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="title">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					The movie's title. Use the xml:lang attribute to state the language if not english.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="label" type="xsd:string" use="optional" fixed="original" />
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="ticket">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					If I have the actual ticket from the cinema, this refers to it by date, place and country.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="date" type="xsd:date" use="optional" />
+			<xsd:attribute name="place" type="xsd:string" use="optional" />
+			<xsd:attribute name="country" type="xsd:string" use="optional" />
+		</xsd:complexType>
+	</xsd:element>
+	
+</xsd:schema>
