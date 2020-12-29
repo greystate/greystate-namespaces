@@ -59,7 +59,7 @@
 				</xsd:simpleType>
 			</xsd:attribute>
 			
-			<xsd:attribute name="imdb" type="xsd:string" use="optional">
+			<xsd:attribute name="imdb" use="optional">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
 						<xsd:pattern value="tt[0-9]{7,}" />
