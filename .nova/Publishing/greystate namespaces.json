@@ -1,5 +1,10 @@
 {
   "identifier" : "48980A73-E718-41CD-B898-81965A9D7173",
+  "ignoredFilePatterns" : [
+    ".nova",
+    ".git",
+    "README.md"
+  ],
   "remotePath" : "\/xmlns",
   "remoteURL" : "https:\/\/xmlns.greystate.dk",
   "server" : "greystate namespaces",
