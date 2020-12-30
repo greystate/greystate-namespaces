@@ -3,5 +3,5 @@
   "remotePath" : "\/xmlns",
   "remoteURL" : "https:\/\/xmlns.greystate.dk",
   "server" : "greystate namespaces",
-  "usesPublishing" : false
+  "usesPublishing" : true
 }
