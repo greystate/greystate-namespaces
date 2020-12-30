@@ -38,6 +38,8 @@
 			<xsd:documentation xml:lang="en">
 				<p xmlns="http://www.w3.org/1999/xhtml">
 					Contains a single movie with title and IMDb reference etc.
+					The <code>seenthat</code> attribute refers to that movie's ID on a site that might not work anymore.
+					But I'm keeping it for now, just in case it comes back online.
 				</p>
 			</xsd:documentation>
 		</xsd:annotation>
