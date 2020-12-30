@@ -7,10 +7,11 @@ If you peek through the code you'll probably discover a couple of things:
 
 - It seems to have originated around April 2002
 - It's written in Microsoft's **JScript** ASP variant
-- The schemas are transformed to HTML using XSLT
+- The schemas are transformed to HTML using XSLT, because, *of course*
 - The transformations are done using another legacy project of mine, [XMLObject()](https://xmlobject.greystate.dk)
 - It's using my `Server.Transfer()` trick to hide the `.asp` part of the URLs,
 but keeping the logic in a single file ([process.asp](process.asp)).
+- I was using a source code control system called **RCS** at the time
 
 ## Why are all the namespace URIs using HTTP when the site is running on HTTPS?
 
