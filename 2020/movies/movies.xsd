@@ -19,7 +19,7 @@
 				An XML application for keeping track of the movies I have seen.
 			</p>
 			<p xmlns="http://www.w3.org/1999/xhtml">
-				Typical prefix is <var>m</var> eg. <code>&lt;m:movies&gt;...&lt;/m:movie&gt;</code>
+				Typical prefix (if needed) is <var>mov</var> eg. <code>&lt;mov:movies&gt;...&lt;/mov:movie&gt;</code>
 			</p>
 		</xsd:documentation>
 	</xsd:annotation>
