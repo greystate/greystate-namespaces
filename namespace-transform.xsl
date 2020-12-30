@@ -226,7 +226,12 @@
 	
 	<xsl:template match="xsd:attribute[@type]">
 		<xsl:text> </xsl:text>
-		<span class="attribute"><xsl:value-of select="@name" />=&quot;<span class="typeref"><xsl:apply-templates select="@type" /></span>&quot;</span>
+		<span class="attribute">
+			<xsl:value-of select="@name" />
+			<xsl:text>=&quot;</xsl:text>
+			<span class="typeref"><xsl:apply-templates select="(@type[not(../@fixed)] | @fixed)[1]" /></span>
+			<xsl:text>&quot;</xsl:text>
+		</span>
 	</xsl:template>
 	
 	<xsl:template match="xsd:documentation">
