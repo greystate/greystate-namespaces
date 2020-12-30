@@ -90,7 +90,11 @@
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
-			<xsd:attribute name="label" type="xsd:string" use="optional" fixed="original" />
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="label" type="xsd:string" use="optional" fixed="original" />
+				</xsd:extension>
+			</xsd:simpleContent>
 		</xsd:complexType>
 	</xsd:element>
 	
