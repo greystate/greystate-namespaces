@@ -29,6 +29,7 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element ref="movie" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="series" minOccurs="0" maxOccurs="unbounded" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -83,11 +84,42 @@
 		</xsd:complexType>
 	</xsd:element>
 
+	<xsd:element name="series">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Container for a "series" of some kind (eg. movies that are part of a trilogy or a TV series)
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="title" minOccurs="1" maxOccurs="unbounded" />
+				<xsd:element ref="season" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+			<xsd:attribute name="year" type="xsd:gYear" use="optional" />
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="season">
+		<xsd:annotation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Container for a list of episodes in a season.
+			</p>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="episode" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+			<xsd:attribute name="num" type="xsd:positiveInteger" use="required" />
+		</xsd:complexType>
+	</xsd:element>
+	
 	<xsd:element name="title">
 		<xsd:annotation>
 			<xsd:documentation xml:lang="en">
 				<p xmlns="http://www.w3.org/1999/xhtml">
-					The movie's title. Use the <code>xml:lang</code> attribute to state the language if not english.
+					The movie's or the series' title. Use the <code>xml:lang</code> attribute to state the language if not english.
 				</p>
 			</xsd:documentation>
 		</xsd:annotation>
