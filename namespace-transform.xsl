@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 	File:		namespace-transform.xml
 	Author:		Chriztian Steinmeier
@@ -64,7 +64,7 @@
 		<xsl:apply-templates select="namespace[@url = $namespace]" />
 		<div id="footer">
 			<address>
-				Copyright &#169;2002&#8212;<xsl:value-of select="$currentYear" /> by Chriztian Steinmeier.
+				Copyright 2002-<xsl:value-of select="$currentYear" /> by Chriztian Steinmeier.
 			</address>
 		</div>
 	</xsl:template>

@@ -39,14 +39,15 @@ oXML.transform();
 
 var strHTML = oXML.error ? oXML.errorDesc : oXML.output;
 
-%><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+%><!DOCTYPE html>
 <html>
 <head>
 	<title>Greystate XML Namespace <%= strResource %></title>
 	<meta http-equiv="author" content="Chriztian Steinmeier">
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="/standard.css">
 	<link rel="stylesheet" type="text/css" href="/xmlschema.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
