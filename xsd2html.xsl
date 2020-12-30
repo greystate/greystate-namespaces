@@ -1,4 +1,9 @@
 <?xml version="1.0"?>
+<!--
+  Note: This is not being used - can't remember where I got it from
+        but I tried it and wasn't happy with the output so started my own
+        transform (i.e., `namespace-transform.xsl`).
+-->
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Note: This is not being used - can't remember where I got it from
+        but I tried it and wasn't happy with the output so started my own
+        transform (i.e., `namespace-transform.xsl`).
+-->
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
