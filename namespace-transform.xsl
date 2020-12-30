@@ -211,7 +211,12 @@
 		<xsl:apply-templates />
 	</xsl:template>
 
-	<xsl:template match="xsd:attribute/xsd:simpleType/xsd:restriction[@base='xsd:string' or @base='xsd:integer'][xsd:enumeration]"><xsl:for-each select="xsd:enumeration"><span class="enumValue"><xsl:value-of select="@value" /></span><xsl:if test="not(position()=last())">|</xsl:if></xsl:for-each></xsl:template>
+	<xsl:template match="xsd:restriction[xsd:enumeration]">
+		<xsl:for-each select="xsd:enumeration">
+			<span class="enumValue"><xsl:value-of select="@value" /></span>
+			<xsl:if test="not(position()=last())">|</xsl:if>
+		</xsl:for-each>
+	</xsl:template>
 	
 	<xsl:template match="xsd:restriction[xsd:pattern]">
 		<span class="typeref">/</span>
