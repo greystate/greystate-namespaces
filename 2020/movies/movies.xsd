@@ -77,7 +77,7 @@
 		<xsd:annotation>
 			<xsd:documentation xml:lang="en">
 				<p xmlns="http://www.w3.org/1999/xhtml">
-					The movie's title. Use the xml:lang attribute to state the language if not english.
+					The movie's title. Use the <code>xml:lang</code> attribute to state the language if not english.
 				</p>
 			</xsd:documentation>
 		</xsd:annotation>
