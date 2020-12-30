@@ -156,6 +156,17 @@
 		</div>
 	</xsl:template>
 
+	<xsl:template match="xsd:extension[@base][count(*[not(local-name() = 'attribute')]) = 0]">
+		<xsl:text> </xsl:text>
+		<code class="typeref">
+			<xsl:if test="starts-with(@base, $xsdPrefix)"><xsl:attribute name="class">typeref xsdtype</xsl:attribute></xsl:if>
+			<xsl:text> </xsl:text>
+			<xsl:apply-templates select="@base" />
+		</code>
+	</xsl:template>		
+	
+	<xsl:template match="xsd:extension[xsd:*[not(self::xsd:attribute)]]" />
+	
 	<xsl:template match="xsd:element[@ref]">
 		<div class="elementwrapper">
 			<code><span class="element"><xsl:value-of select="@ref" /></span></code>
@@ -201,6 +212,13 @@
 	</xsl:template>
 
 	<xsl:template match="xsd:attribute/xsd:simpleType/xsd:restriction[@base='xsd:string' or @base='xsd:integer'][xsd:enumeration]"><xsl:for-each select="xsd:enumeration"><span class="enumValue"><xsl:value-of select="@value" /></span><xsl:if test="not(position()=last())">|</xsl:if></xsl:for-each></xsl:template>
+	
+	<xsl:template match="xsd:restriction[xsd:pattern]">
+		<span class="typeref">/</span>
+		<span class="enumValue"><xsl:value-of select="xsd:pattern/@value" /></span>
+		<span class="typeref">/</span>
+	</xsl:template>
+	
 	<xsl:template match="xsd:attribute[@type]">
 		<xsl:text> </xsl:text>
 		<span class="attribute"><xsl:value-of select="@name" />=&quot;<span class="typeref"><xsl:apply-templates select="@type" /></span>&quot;</span>
