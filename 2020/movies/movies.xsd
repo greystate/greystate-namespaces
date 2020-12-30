@@ -95,17 +95,22 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element ref="title" minOccurs="1" maxOccurs="unbounded" />
-				<xsd:element ref="season" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:choice>
+					<xsd:element ref="season" minOccurs="0" maxOccurs="unbounded" />
+					<xsd:element ref="movie" minOccurs="0" maxOccurs="unbounded" />
+				</xsd:choice>
 			</xsd:sequence>
 			<xsd:attribute name="year" type="xsd:gYear" use="optional" />
 		</xsd:complexType>
 	</xsd:element>
 	
 	<xsd:element name="season">
-		<xsd:annotation xml:lang="en">
-			<p xmlns="http://www.w3.org/1999/xhtml">
-				Container for a list of episodes in a season.
-			</p>
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Container for a list of episodes in a season.
+				</p>
+			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:sequence>
@@ -113,6 +118,9 @@
 			</xsd:sequence>
 			<xsd:attribute name="num" type="xsd:positiveInteger" use="required" />
 		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="episode">
 	</xsd:element>
 	
 	<xsd:element name="title">
