@@ -3,7 +3,11 @@
 This is the source code for the site at [https://xmlns.greystate.dk/](https://xmlns.greystate.dk/)
 where I've hosted the schemas for some of my XML applications for a long time.
 
-If you peek through the code you'll probably discover a couple of things:
+XMLSchemas are XML documents but can be quite difficult to "read", so I figured
+I could "extract" the human-understandable parts by rendering them a little simpler.
+
+That's what the website does — If you peek through the code you'll probably
+discover a couple of things:
 
 - It seems to have originated around April 2002
 - It's written in Microsoft's **JScript** ASP variant
