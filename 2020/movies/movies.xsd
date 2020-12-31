@@ -30,6 +30,7 @@
 			<xsd:sequence>
 				<xsd:element ref="movie" minOccurs="0" maxOccurs="unbounded" />
 				<xsd:element ref="series" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="collection" minOccurs="0" maxOccurs="unbounded" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -88,19 +89,31 @@
 		<xsd:annotation>
 			<xsd:documentation xml:lang="en">
 				<p xmlns="http://www.w3.org/1999/xhtml">
-					Container for a "series" of some kind (eg. movies that are part of a trilogy or a TV series)
+					Container for a TV series.
 				</p>
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element ref="title" minOccurs="1" maxOccurs="unbounded" />
-				<xsd:choice>
-					<xsd:element ref="season" minOccurs="0" maxOccurs="unbounded" />
-					<xsd:element ref="movie" minOccurs="0" maxOccurs="unbounded" />
-				</xsd:choice>
+				<xsd:element ref="season" minOccurs="0" maxOccurs="unbounded" />
 			</xsd:sequence>
-			<xsd:attribute name="year" type="xsd:gYear" use="optional" />
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="collection">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Container for a collection of movies (e.g. movies that are part of a trilogy).
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="movie" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+			<xsd:attribute name="name" type="xsd:string" use="required" />
 		</xsd:complexType>
 	</xsd:element>
 	
