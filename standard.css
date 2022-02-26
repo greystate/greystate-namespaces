@@ -4,10 +4,11 @@ body {
 	font: large georgia, serif;
 	color: #000;
 	background: #fff;
+	min-height: 95vh;
 }
 
 p {
-	margin-top: 4px;
+	margin-top: 0.5em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,7 +27,7 @@ ul {
 }
 
 li {
-	margin-top: 4px;
+	margin-top: 0.2em;
 }
 
 dt {
@@ -57,10 +58,9 @@ h2 code {
 }
 
 #footer {
+	margin-top: 1em;
 	font-size: small;
 	font-style: italic;
-	position: absolute;
-	bottom: 10px;
 }
 
 :link, :visited {
