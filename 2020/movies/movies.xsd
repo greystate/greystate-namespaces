@@ -147,7 +147,14 @@
 		<xsd:complexType>
 			<xsd:simpleContent>
 				<xsd:extension base="xsd:string">
-					<xsd:attribute name="label" type="xsd:string" use="optional" fixed="original" />
+					<xsd:attribute name="label" use="optional">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:enumeration value="original" />
+								<xsd:enumeration value="alternate" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
 				</xsd:extension>
 			</xsd:simpleContent>
 		</xsd:complexType>
