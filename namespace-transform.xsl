@@ -100,7 +100,7 @@
 			</dd>
 		</dl>
 	</xsl:template>
-	
+
 	<xsl:template match="namespace" mode="toc-mode">
 		<li><a href="{substring-after(@url, $serverName)}"><xsl:value-of select="@url" /></a></li>
 	</xsl:template>
@@ -163,10 +163,10 @@
 			<xsl:text> </xsl:text>
 			<xsl:apply-templates select="@base" />
 		</code>
-	</xsl:template>		
-	
+	</xsl:template>
+
 	<xsl:template match="xsd:extension[xsd:*[not(self::xsd:attribute)]]" />
-	
+
 	<xsl:template match="xsd:element[@ref]">
 		<div class="elementwrapper">
 			<code><span class="element"><xsl:value-of select="@ref" /></span></code>
@@ -182,9 +182,9 @@
 	</xsl:template>
 
 	<xsl:template match="xsd:simpleContent">
-		
+
 	</xsl:template>
-	
+
 	<xsl:template match="xsd:sequence">
 		(<xsl:for-each select="*"><xsl:apply-templates select="." /><xsl:if test="not(position()=last())">, </xsl:if></xsl:for-each>)
 	</xsl:template>
@@ -192,7 +192,7 @@
 	<xsl:template match="xsd:choice">
 		(<xsl:for-each select="*"><xsl:apply-templates select="." /><xsl:if test="not(position()=last())"> | </xsl:if></xsl:for-each>)
 	</xsl:template>
-	
+
 	<xsl:template match="xsd:all">
 		(<xsl:for-each select="*">(<xsl:apply-templates select="." />)<b class="cardinality">?</b> <xsl:if test="not(position()=last())">, </xsl:if></xsl:for-each>)
 	</xsl:template>
@@ -217,13 +217,20 @@
 			<xsl:if test="not(position()=last())">|</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
-	
+
 	<xsl:template match="xsd:restriction[xsd:pattern]">
 		<span class="typeref">/</span>
 		<span class="enumValue"><xsl:value-of select="xsd:pattern/@value" /></span>
 		<span class="typeref">/</span>
 	</xsl:template>
-	
+
+	<xsl:template match="xsd:restriction[xsd:length]">
+		<span class="typeref"><xsl:value-of select="@base" />{</span>
+		<span class="enumValue"><xsl:value-of select="xsd:length/@value" /></span>
+		<span class="typeref">}</span>
+	</xsl:template>
+
+
 	<xsl:template match="xsd:attribute[@type]">
 		<xsl:text> </xsl:text>
 		<span class="attribute">
@@ -233,7 +240,7 @@
 			<xsl:text>&quot;</xsl:text>
 		</span>
 	</xsl:template>
-	
+
 	<xsl:template match="xsd:documentation">
 		<xsl:apply-templates />
 	</xsl:template>
