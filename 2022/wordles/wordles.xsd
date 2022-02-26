@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	File:    wordles.xsd
+	Author:  Chriztian Steinmeier
+	Created: 2022-02-26
+	Description:
+		XMLSchema for my wordles XML format.
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2022/wordles"
+	xmlns="http://xmlns.greystate.dk/2022/wordles"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				An XML application for keeping track of scores in a WORDLE type quiz.
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix (if needed) would be <var>w</var> eg. <code>&lt;w:wordles&gt;...&lt;/w:wordles&gt;</code>
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->
+	<xsd:element name="wordles">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="wordles" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="wordle" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="wordle">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="try" minOccurs="1" maxOccurs="6" />
+			</xsd:sequence>
+			<xsd:attribute name="date" type="xsd:date" />
+			<xsd:attribute name="number" type="xsd:integer" />
+			<xsd:attribute name="score">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:enumeration value="0" />
+						<xsd:enumeration value="1" />
+						<xsd:enumeration value="2" />
+						<xsd:enumeration value="3" />
+						<xsd:enumeration value="4" />
+						<xsd:enumeration value="5" />
+						<xsd:enumeration value="6" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="word">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:length value="5" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="try">
+		<xsd:annotation>
+			<xsd:documentation>
+				<p xmlns="http://www.w3.org/1999/xhtml">One five letter word as one of 6 tries at solving the wordle.</p>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:length value="5" />
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+
+</xsd:schema>
