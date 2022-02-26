@@ -1,21 +1,21 @@
 <% @language = "jscript" %>
 <% Response.Expires = "0"
 /* -----------------------------------------------------
-	File:		process.asp								
-	Author:		Chriztian Steinmeier					
-	Created:	2002-11-19								
-	RCS-Id												
-		$Id: process.asp,v 1.2 2004-03-03 01:53:04+01 chriz Exp chriz $	
-	Description											
-		Processing file for the namespaces section of 	
-		greystate.dk - ie:								
-														
-		http://xmlns.greystate.dk/2002/insectbase/		
-														
-		- will actually Server.Transfer() to this file,	
-		which will catch the requested folder, and		
-		output information about that namespace.		
-														
+	File:		process.asp
+	Author:		Chriztian Steinmeier
+	Created:	2002-11-19
+	RCS-Id
+		$Id: process.asp,v 1.2 2004-03-03 01:53:04+01 chriz Exp chriz $
+	Description
+		Processing file for the namespaces section of
+		greystate.dk - ie:
+
+		http://xmlns.greystate.dk/2002/insectbase/
+
+		- will actually Server.Transfer() to this file,
+		which will catch the requested folder, and
+		output information about that namespace.
+
 ----------------------------------------------------- */
 %><!-- #include virtual="/include/xmlobject.asp" --><%
 
