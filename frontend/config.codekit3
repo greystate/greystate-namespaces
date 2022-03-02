@@ -103,7 +103,8 @@
     "displayValue" : "Greystate Namespaces",
     "displayValueWasSetByUser" : 1,
     "iconImageName" : "brackets_purple",
-    "iconImageWasSetByUser" : 0
+    "iconImageWasSetByUser" : 0,
+    "lastBuiltDate" : 667956017.58402002
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,
