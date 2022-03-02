@@ -105,6 +105,11 @@
 		<li><a href="{substring-after(@url, $serverName)}"><xsl:value-of select="@url" /></a></li>
 	</xsl:template>
 
+	<xsl:template match="namespace[not(schemaLocation)]" mode="toc-mode">
+		<li><xsl:value-of select="@url" /></li>
+	</xsl:template>
+
+
 	<xsl:template match="schemaLocation">
 		<a href="{.}" target="_blank" title="Open schema in new browser"><xsl:value-of select="." /></a>
 	</xsl:template>
