@@ -124,14 +124,12 @@
 	</xsl:template>
 
 	<xsl:template match="xsd:element//xsd:attribute">
-		<xsl:text> </xsl:text>
 		<xsl:choose>
 			<xsl:when test="@ref">
-				<span class="attribute">
-					<xsl:value-of select="@ref" />=&quot;<xsl:apply-templates select="//xsd:attribute[@name = current()/@ref]"/>&quot;
-				</span>
+				<xsl:apply-templates select="//xsd:attribute[@name = current()/@ref]"/>
 			</xsl:when>
 			<xsl:otherwise>
+				<xsl:text> </xsl:text>
 				<span class="attribute">
 					<xsl:value-of select="@name" />=&quot;<xsl:apply-templates />&quot;
 				</span>
