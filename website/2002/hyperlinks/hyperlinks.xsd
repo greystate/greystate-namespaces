@@ -29,7 +29,7 @@
 
 	<!-- Root element -->
 	<xsd:element name="hyperlinks">
-    	<xsd:complexType>
+		<xsd:complexType>
 			<xsd:group ref="contents" minOccurs="0" maxOccurs="unbounded" />
 		</xsd:complexType>
 	</xsd:element>
@@ -51,8 +51,8 @@
 		</xsd:annotation>
 
 		<xsd:complexType>
-	       	<xsd:sequence>
-	           	<xsd:element ref="name" minOccurs="1" maxOccurs="1" />
+			<xsd:sequence>
+				<xsd:element ref="name" minOccurs="1" maxOccurs="1" />
 				<xsd:element ref="url" minOccurs="1" maxOccurs="1" />
 				<xsd:element ref="description" minOccurs="1" maxOccurs="1" />
 			</xsd:sequence>
@@ -79,8 +79,8 @@
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:sequence>
-		        <xsd:element ref="hyperlink" minOccurs="0" maxOccurs="unbounded" />
-	        </xsd:sequence>
+				<xsd:element ref="hyperlink" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
 
 			<xsd:attribute name="name" type="xsd:string" use="required" />
 		</xsd:complexType>
@@ -89,5 +89,5 @@
 	<xsd:element name="name" type="xsd:string" />
 	<xsd:element name="url" type="xsd:anyURI" />
 	<xsd:element name="description" type="xsd:string" />
-		
+
 </xsd:schema>
