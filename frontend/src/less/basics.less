@@ -5,6 +5,11 @@ body {
 	min-height: 95vh;
 }
 
+
+:link, :visited {
+	color: #039;
+}
+
 p {
 	margin-top: 0.5em;
 }
@@ -53,15 +58,22 @@ h2 {
 h2 code {
 	color: #f00;
 	font-weight: bold;
+
+	:link, :visited {
+		color: #f00;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+			text-underline-offset: 3px;
+			text-decoration-thickness: 4px;
+		}
+	}
 }
 
 #footer {
 	margin-top: 1em;
 	font-size: small;
 	font-style: italic;
-}
-
-:link, :visited {
-	color: #039;
 }
 
