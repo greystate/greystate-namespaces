@@ -35,7 +35,7 @@
 	</namespace>
 
 	<namespace url="http://xmlns.greystate.dk/2004/recording">
-		<schemaLocation>http://xmlns.greystate.dk/2004/recording/recording.xsd</schemaLocation>
+		<!-- <schemaLocation>http://xmlns.greystate.dk/2004/recording/recording.xsd</schemaLocation> -->
 	</namespace>
 
 	<namespace url="http://xmlns.greystate.dk/2005/mp3playa-settings">

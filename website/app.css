@@ -1,0 +1,123 @@
+body {
+  font: large georgia, serif;
+  color: #000;
+  background: #fff;
+  min-height: 95vh;
+}
+:link,
+:visited {
+  color: #039;
+}
+p {
+  margin-top: 0.5em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+h1 {
+  text-align: center;
+  font-family: verdana, arial, sans-serif;
+}
+ul {
+  list-style-type: square;
+  margin-top: 8px;
+}
+li {
+  margin-top: 0.2em;
+}
+dt {
+  font-weight: bold;
+  padding-left: 1em;
+  margin-top: 8px;
+  margin-left: 20px;
+  border-bottom: 1px dotted #ddd;
+  border-left: 4px solid #ddd;
+}
+code,
+p.documentation code {
+  font-family: "lucida console", courier, monospace;
+  color: #009;
+}
+h2 {
+  padding: 10px;
+  border: 2px dotted #ddd;
+  background-color: #eee;
+  text-align: center;
+}
+h2 code {
+  color: #f00;
+  font-weight: bold;
+}
+h2 code :link,
+h2 code :visited {
+  color: #f00;
+  text-decoration: none;
+}
+h2 code :link:hover,
+h2 code :visited:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 4px;
+}
+#footer {
+  margin-top: 1em;
+  font-size: small;
+  font-style: italic;
+}
+.elementwrapper {
+  margin-left: 1em;
+  margin-bottom: 1ex;
+  color: #009;
+  padding: 2px;
+}
+.elementwrapper p.documentation {
+  margin-left: 2em;
+  color: #000;
+}
+.groupwrapper {
+  /* background: #cf3; */
+}
+.element {
+  color: #900;
+  font-weight: bold;
+}
+.attribute {
+  color: #c00;
+  font-weight: normal;
+}
+.enumValue {
+  color: #000;
+  font-weight: bold;
+}
+.typeref {
+  color: #060;
+}
+.xsdtype {
+  color: #090;
+  font-weight: bold;
+}
+.cardinality {
+  font-weight: bold;
+  color: #000;
+}
+.debugblue {
+  border: 1px dashed blue;
+}
+.debugred {
+  border: 1px dashed red;
+}
+.debuggreen {
+  border: 1px dashed green;
+}
+.debugblue,
+.debuggreen,
+.debugred {
+  height: 20px;
+  padding: 2px;
+}

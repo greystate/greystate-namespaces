@@ -70,7 +70,7 @@
 	</xsl:template>
 
 	<xsl:template match="namespace">
-		<h2>{<code><xsl:value-of select="@url" /></code>}</h2>
+		<h2>{<code><a href="{$serverName}"><xsl:value-of select="$serverName" /></a><xsl:value-of select="substring-after(@url, $serverName)" /></code>}</h2>
 		<dl>
 			<dt>Description</dt>
 			<dd>
@@ -104,6 +104,11 @@
 	<xsl:template match="namespace" mode="toc-mode">
 		<li><a href="{substring-after(@url, $serverName)}"><xsl:value-of select="@url" /></a></li>
 	</xsl:template>
+
+	<xsl:template match="namespace[not(schemaLocation)]" mode="toc-mode">
+		<li><xsl:value-of select="@url" /></li>
+	</xsl:template>
+
 
 	<xsl:template match="schemaLocation">
 		<a href="{.}" target="_blank" title="Open schema in new browser"><xsl:value-of select="." /></a>

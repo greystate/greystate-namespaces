@@ -1,0 +1,9 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "cp frontend\/build\/assets\/app.css website\/app.css\n"
+    }
+  },
+  "identifier" : "0CFE44FA-CEF9-4FF2-89A9-177C49647EA7"
+}

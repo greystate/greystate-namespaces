@@ -3,8 +3,10 @@
   "ignoredFilePatterns" : [
     ".nova",
     ".git",
-    "README.md"
+    "README.md",
+    "frontend\/"
   ],
+  "localPath" : "website",
   "remotePath" : "\/xmlns",
   "remoteURL" : "https:\/\/xmlns.greystate.dk",
   "server" : "greystate namespaces",

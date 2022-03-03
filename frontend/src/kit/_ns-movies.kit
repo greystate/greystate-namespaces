@@ -1,0 +1,65 @@
+<h2>{<code><a href="/">http://xmlns.greystate.dk</a>/2020/movies</code>}</h2>
+<dl>
+<dt>Description</dt>
+<dd>
+<p class="documentation">
+				An XML application for keeping track of the movies I have seen.
+			</p>
+<p class="documentation">
+				Typical prefix (if needed) is <var>mov</var> eg. <code>&lt;mov:movies&gt;...&lt;/mov:movie&gt;</code></p>
+</dd>
+<dt>XMLSchema</dt>
+<dd>
+<p><a href="http://xmlns.greystate.dk/2020/movies/movies.xsd" target="_blank" title="Open schema in new browser">http://xmlns.greystate.dk/2020/movies/movies.xsd</a></p>
+</dd>
+<dt>Elements defined</dt>
+<dd>
+<div class="elementwrapper"><code>&lt;<span class="element">movies</span> /&gt;</code>
+		(movie<b class="cardinality">*</b>, series<b class="cardinality">*</b>, collection<b class="cardinality">*</b>)
+	</div>
+<div class="elementwrapper"><code>&lt;<span class="element">movie</span> <span class="attribute">rating="<span class="enumValue">1</span>|<span class="enumValue">2</span>|<span class="enumValue">3</span>|<span class="enumValue">4</span>|<span class="enumValue">5</span>"
+				</span> <span class="attribute">imdb="<span class="typeref">/</span><span class="enumValue">tt[0-9]{7,}</span><span class="typeref">/</span>"
+				</span> <span class="attribute">year="<span class="typeref">xsd:gYear</span>"</span> <span class="attribute">seenthat="<span class="typeref">xsd:integer</span>"</span> <span class="attribute">ignore="<span class="enumValue">yes</span>|<span class="enumValue">no</span>"
+				</span> /&gt;</code>
+		(title<b class="cardinality">+</b>, ticket<b class="cardinality">*</b>)
+	<p class="documentation">
+					Contains a single movie with title and IMDb reference etc.
+					The <code>seenthat</code> attribute refers to that movie's ID on a site that might not work anymore.
+					But I'm keeping it for now, just in case it comes back online.
+				</p>
+</div>
+<div class="elementwrapper"><code>&lt;<span class="element">series</span> /&gt;</code>
+		(title<b class="cardinality">+</b>, season<b class="cardinality">*</b>)
+	<p class="documentation">
+					Container for a TV series.
+				</p>
+</div>
+<div class="elementwrapper"><code>&lt;<span class="element">collection</span> <span class="attribute">name="<span class="typeref">xsd:string</span>"</span> /&gt;</code>
+		(movie<b class="cardinality">*</b>)
+	<p class="documentation">
+					Container for a collection of movies (e.g. movies that are part of a trilogy).
+				</p>
+</div>
+<div class="elementwrapper"><code>&lt;<span class="element">season</span> <span class="attribute">num="<span class="typeref">xsd:positiveInteger</span>"</span> /&gt;</code>
+		(episode<b class="cardinality">*</b>)
+	<p class="documentation">
+					Container for a list of episodes in a season.
+				</p>
+</div>
+<div class="elementwrapper"><code>&lt;<span class="element">episode</span> /&gt;</code></div>
+<div class="elementwrapper"><code>&lt;<span class="element">title</span> <span class="attribute">label="<span class="enumValue">original</span>|<span class="enumValue">alternate</span>"
+				</span> /&gt;</code> <code class="typeref xsdtype"> xsd:string</code><p class="documentation">
+					The movie's or the series' title. Use the <code>xml:lang</code> attribute to state the language if not english.
+				</p>
+</div>
+<div class="elementwrapper"><code>&lt;<span class="element">ticket</span> <span class="attribute">date="<span class="typeref">xsd:date</span>"</span> <span class="attribute">place="<span class="typeref">xsd:string</span>"</span> <span class="attribute">country="<span class="typeref">xsd:string</span>"</span> /&gt;</code><p class="documentation">
+					If I have the actual ticket from the cinema, this refers to it by date, place and country.
+				</p>
+</div>
+</dd>
+</dl>
+<div id="footer">
+<address>
+				Copyright 2002-2022 by Chriztian Steinmeier.
+			</address>
+</div>
