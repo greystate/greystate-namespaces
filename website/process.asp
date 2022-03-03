@@ -45,8 +45,7 @@ var strHTML = oXML.error ? oXML.errorDesc : oXML.output;
 	<title>Greystate XML Namespace <%= strResource %></title>
 	<meta http-equiv="author" content="Chriztian Steinmeier">
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="/standard.css">
-	<link rel="stylesheet" type="text/css" href="/xmlschema.css">
+	<link rel="stylesheet" href="/app.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>

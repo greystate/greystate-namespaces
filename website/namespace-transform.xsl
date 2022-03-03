@@ -70,7 +70,7 @@
 	</xsl:template>
 
 	<xsl:template match="namespace">
-		<h2>{<code><xsl:value-of select="@url" /></code>}</h2>
+		<h2>{<code><a href="{$serverName}"><xsl:value-of select="$serverName" /></a><xsl:value-of select="substring-after(@url, $serverName)" /></code>}</h2>
 		<dl>
 			<dt>Description</dt>
 			<dd>
