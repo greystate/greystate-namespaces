@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
-	File:		mp3playa-settings.xsd								
-	Author:		Chriztian Steinmeier					
-	Created:	2005-03-30		
-	RCS-Id		
+	File:		mp3playa-settings.xsd
+	Author:		Chriztian Steinmeier
+	Created:	2005-03-30
+	RCS-Id
 		$Id: mp3playa-settings.xsd,v 1.2 2005-03-31 03:48:12+02 chriz Exp chriz $
 	Description
 		XMLSchema for the configuration file for the "BechBox MP3Playa"
-		
+
 -->
 <xsd:schema
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -33,21 +33,21 @@
 				<xsd:element ref="loadingMessage" />
 				<xsd:element ref="errorMessage" />
 				<xsd:element ref="autoplay" />
-				
+
 				<xsd:element ref="colors" />
-				
+
 				<xsd:element ref="backgroundImage" />
 				<xsd:element ref="displayBGAlpha" />
-				
+
 				<xsd:element ref="showVolume" />
-				
+
 				<xsd:element ref="buttons" />
-				
-				
+
+
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
+
 	<xsd:element name="colors">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -58,13 +58,13 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
+
 	<xsd:element name="buttons">
 		<xsd:complexType>
 			<xsd:group ref="buttonGroup" />
 		</xsd:complexType>
 	</xsd:element>
-	
+
 	<xsd:group name="buttonGroup">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -76,28 +76,28 @@
 		<xsd:all>
 			<xsd:element ref="buttonWidth" />
 			<xsd:element ref="buttonHeight" />
-				
+
 			<xsd:element ref="backButton" />
 			<xsd:element ref="playButton" />
 			<xsd:element ref="stopButton" />
 			<xsd:element ref="nextButton" />
-			
+
 			<xsd:element ref="pauseButton" />
 		</xsd:all>
 	</xsd:group>
-	
-	
+
+
 	<xsd:element name="welcomeMessage" type="xsd:string" />
 	<xsd:element name="defaultPlaylist" type="xsd:anyURI" />
 	<xsd:element name="loadingMessage" type="xsd:string" />
 	<xsd:element name="errorMessage" type="xsd:string" />
 	<xsd:element name="autoplay" type="xsd:boolean" />
-	
+
 	<xsd:element name="background" type="colorType" />
 	<xsd:element name="loadTrack" type="colorType" />
 	<xsd:element name="loadBar" type="colorType" />
 	<xsd:element name="text" type="colorType" />
-	
+
 	<xsd:element name="backgroundImage" type="xsd:anyURI" />
 	<xsd:element name="displayBGAlpha">
 		<xsd:simpleType>
@@ -107,12 +107,12 @@
 			</xsd:restriction>
 		</xsd:simpleType>
 	</xsd:element>
-	
+
 	<xsd:element name="showVolume" type="xsd:boolean" />
-	
+
 	<xsd:element name="buttonWidth" type="xsd:integer" />
 	<xsd:element name="buttonHeight" type="xsd:integer" />
-	
+
 	<xsd:element name="backButton" type="buttonType" />
 	<xsd:element name="playButton" type="buttonType" />
 	<xsd:element name="stopButton" type="buttonType" />
@@ -125,11 +125,11 @@
 			<xsd:element name="hoverImage" type="xsd:anyURI" />
 		</xsd:sequence>
 	</xsd:complexType>
-	
+
 	<xsd:simpleType name="colorType">
 		<xsd:restriction base="xsd:string">
 			<xsd:pattern value="0x[0-9A-Fa-f]{6}" />
 		</xsd:restriction>
 	</xsd:simpleType>
-	
+
 </xsd:schema>

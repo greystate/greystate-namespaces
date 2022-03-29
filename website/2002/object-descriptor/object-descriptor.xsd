@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
-	File:		object-descriptor.xsd					
-	Author:		Chriztian Steinmeier					
-	Created:	2002-11-25		
-	RCS-Id		
+	File:		object-descriptor.xsd
+	Author:		Chriztian Steinmeier
+	Created:	2002-11-25
+	RCS-Id
 		$Id: object-descriptor.xsd,v 1.0 2002-11-28 23:44:09+01 chriz Exp chriz $
 	Description
 		XMLSchema for Object References
-		
+
 -->
 <xsd:schema
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -31,15 +31,15 @@
 			<xsd:any namespace="##any" minOccurs="1" maxOccurs="unbounded" processContents="skip" />
 		</xsd:sequence>
     </xsd:complexType>
-	
-		
+
+
 	<xsd:group name="basics">
 		<xsd:all>
 	    	<xsd:element ref="name" />
 			<xsd:element name="description" type="descriptionType" />
         </xsd:all>
     </xsd:group>
-	
+
 	<xsd:element name="parameters">
 		<xsd:sequence>
         	<xsd:element name="parameter">
@@ -49,14 +49,14 @@
 			</xsd:element>
         </xsd:sequence>
 	</xsd:element>
-	
+
 	<xsd:group name="params">
 		<xsd:choice>
 			<xsd:element ref="optional" />
 			<xsd:element ref="parameters" />
 		</xsd:choice>
 	</xsd:group>
-	
+
 	<xsd:element name="property">
 		<xsd:complexType>
 			<xsd:group ref="basics" />
@@ -69,5 +69,5 @@
 			<xsd:element ref="parameters" />
 		</xsd:complexType>
 	</xsd:element>
-	
+
 </xsd:schema>
