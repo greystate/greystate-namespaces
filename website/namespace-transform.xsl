@@ -137,6 +137,13 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<xsl:template match="xsd:element//xsd:attribute[starts-with(@ref, 'xml:')]">
+		<xsl:text> </xsl:text>
+		<span class="nsattribute">
+			<xsl:value-of select="@ref" />=&quot;<span class="typeref">xsd:string</span>&quot;
+		</span>
+	</xsl:template>
+
 	<xsl:template match="xsd:element[@name]">
 		<div class="elementwrapper">
 			<code>
