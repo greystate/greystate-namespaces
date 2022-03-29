@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 	File:    movies.xsd
 	Author:  Chriztian Steinmeier
@@ -11,6 +11,8 @@
 	targetNamespace="http://xmlns.greystate.dk/2020/movies"
 	xmlns="http://xmlns.greystate.dk/2020/movies"
 >
+
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
 
 	<!-- Main description -->
 	<xsd:annotation>
@@ -50,7 +52,7 @@
 				<xsd:element ref="title" minOccurs="1" maxOccurs="unbounded" />
 				<xsd:element ref="ticket" minOccurs="0" maxOccurs="unbounded" />
 			</xsd:sequence>
-			
+
 			<xsd:attribute name="rating" use="optional">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:integer">
@@ -62,7 +64,7 @@
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>
-			
+
 			<xsd:attribute name="imdb" use="optional">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
@@ -70,7 +72,7 @@
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>
-			
+
 			<xsd:attribute name="year" type="xsd:gYear" use="required" />
 			<xsd:attribute name="seenthat" type="xsd:integer" use="optional" />
 			<xsd:attribute name="ignore" use="optional">
@@ -81,7 +83,7 @@
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>
-			
+
 		</xsd:complexType>
 	</xsd:element>
 
@@ -100,7 +102,7 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
+
 	<xsd:element name="collection">
 		<xsd:annotation>
 			<xsd:documentation xml:lang="en">
@@ -116,7 +118,7 @@
 			<xsd:attribute name="name" type="xsd:string" use="required" />
 		</xsd:complexType>
 	</xsd:element>
-	
+
 	<xsd:element name="season">
 		<xsd:annotation>
 			<xsd:documentation xml:lang="en">
@@ -132,10 +134,10 @@
 			<xsd:attribute name="num" type="xsd:positiveInteger" use="required" />
 		</xsd:complexType>
 	</xsd:element>
-	
+
 	<xsd:element name="episode">
 	</xsd:element>
-	
+
 	<xsd:element name="title">
 		<xsd:annotation>
 			<xsd:documentation xml:lang="en">
@@ -158,8 +160,9 @@
 				</xsd:extension>
 			</xsd:simpleContent>
 		</xsd:complexType>
+		<xsd:attribute ref="xml:lang" />
 	</xsd:element>
-	
+
 	<xsd:element name="ticket">
 		<xsd:annotation>
 			<xsd:documentation xml:lang="en">
@@ -174,5 +177,5 @@
 			<xsd:attribute name="country" type="xsd:string" use="optional" />
 		</xsd:complexType>
 	</xsd:element>
-	
+
 </xsd:schema>
