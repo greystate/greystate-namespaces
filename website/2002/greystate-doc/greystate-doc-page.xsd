@@ -14,7 +14,9 @@
 	targetNamespace="http://xmlns.greystate.dk/2002/greystate-doc"
 	xmlns="http://xmlns.greystate.dk/2002/greystate-doc"
 >
-	
+
+	<xsd:include schemaLocation="greystate-doc-story.xsd" />
+
 	<xsd:element name="greystate-doc-page">
 		<xsd:complexType>
         	<xsd:sequence>
@@ -39,6 +41,5 @@
 		<xsd:attribute name="basehref" type="xsd:anyURI" />
 	</xsd:element>
 
-	<xsd:include schemaLocation="greystate-doc-story.xsd" />
-	
+
 </xsd:schema>
