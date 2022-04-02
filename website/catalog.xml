@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri name="http://xmlns.greystate.dk/2002/insectbase" uri="./2002/insectbase/insectbase.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2002/hyperlinks" uri="./2002/hyperlinks/hyperlinks.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2002/greystate-doc" uri="./2002/greystate-doc/greystate-doc.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2002/object-descriptor" uri="./2002/object-descriptor/object-descriptor.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2003/code-templates" uri="./2003/code-templates/code-templates.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2003/cv-data" uri="./2003/cv-data/cv-data.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2003/updates" uri="./2003/updates/updates.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2004/recording" />
+  <uri name="http://xmlns.greystate.dk/2005/mp3playa-settings" uri="./2005/mp3playa-settings/mp3playa-settings.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2005/playlist" uri="./2005/playlist/playlist.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2009/layout" uri="./2009/layout/layout.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2010/demo-namespace" uri="./2010/demo-namespace/demo-namespace.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2015/cards" uri="./2015/cards/cards.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2020/hyperlinks" uri="./2020/hyperlinks/hyperlinks.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2020/movies" uri="./2020/movies/movies.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2022/wordles" uri="./2022/wordles/wordles.xsd"/>
+</catalog>
