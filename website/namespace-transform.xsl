@@ -13,19 +13,20 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xhtml="http://www.w3.org/1999/xhtml"
-	exclude-result-prefixes="xsl xsd xhtml"
+	xmlns:cat="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+	exclude-result-prefixes="xsl xsd xhtml cat"
 >
 	<xsl:output method="html" omit-xml-declaration="yes" indent="yes" />
 
 <!-- Parameters -->
-	<xsl:param name="namespace" />
+	<xsl:param name="namespace" select="'http://xmlns.greystate.dk/2022/wordles'" />
 	<xsl:param name="currentYear" select="'2009'" />
 
 <!-- Variables -->
 	<xsl:variable name="serverName">http://xmlns.greystate.dk</xsl:variable>
 	<xsl:variable name="schemaServer" select="concat($serverName, '/')" />
 
-	<xsl:variable name="schemaElement" select="document(substring-after(/namespaces/namespace[@url = $namespace]/schemaLocation, $schemaServer))/xsd:schema" />
+	<xsl:variable name="schemaElement" select="document(substring-after(/cat:catalog/cat:uri[@name = $namespace]/@uri, './'))/xsd:schema" />
 
 	<xsl:variable name="xsdOutputPrefix">xsd:</xsl:variable>
 	<!-- Find the prefix used in source for the XML Schema Namespace -->
@@ -42,7 +43,7 @@
 		<xsl:apply-templates />
 	</xsl:template>
 
-	<xsl:template match="namespaces">
+	<xsl:template match="cat:catalog">
 		<xsl:if test="$namespace = $serverName">
 			<h2>{<code><xsl:value-of select="$serverName" /></code>}</h2>
 			<dl>
@@ -54,14 +55,14 @@
 				<dt>Available namespaces</dt>
 				<dd>
 					<ul>
-						<xsl:apply-templates select="namespace" mode="toc-mode">
-							<xsl:sort select="substring-before(substring-after(@url, concat($serverName, '/')), '/')" data-type="number" order="descending" />
+						<xsl:apply-templates select="cat:uri" mode="toc-mode">
+							<xsl:sort select="substring-before(substring-after(@name, concat($serverName, '/')), '/')" data-type="number" order="descending" />
 						</xsl:apply-templates>
 					</ul>
 				</dd>
 			</dl>
 		</xsl:if>
-		<xsl:apply-templates select="namespace[@url = $namespace]" />
+		<xsl:apply-templates select="cat:uri[@name = $namespace]" />
 		<div id="footer">
 			<address>
 				Copyright 2002-<xsl:value-of select="$currentYear" /> by Chriztian Steinmeier.
@@ -69,8 +70,8 @@
 		</div>
 	</xsl:template>
 
-	<xsl:template match="namespace">
-		<h2>{<code><a href="{$serverName}"><xsl:value-of select="$serverName" /></a><xsl:value-of select="substring-after(@url, $serverName)" /></code>}</h2>
+	<xsl:template match="cat:uri">
+		<h2>{<code><a href="{$serverName}"><xsl:value-of select="$serverName" /></a><xsl:value-of select="substring-after(@name, $serverName)" /></code>}</h2>
 		<dl>
 			<dt>Description</dt>
 			<dd>
@@ -80,7 +81,7 @@
 			<dt>XMLSchema</dt>
 			<dd>
 				<p>
-					<xsl:apply-templates select="schemaLocation" />
+					<xsl:apply-templates select="@uri" />
 				</p>
 				<xsl:if test="$schemaElement[xsd:include]">
 					Includes:
@@ -101,16 +102,16 @@
 		</dl>
 	</xsl:template>
 
-	<xsl:template match="namespace" mode="toc-mode">
-		<li><a href="{substring-after(@url, $serverName)}"><xsl:value-of select="@url" /></a></li>
+	<xsl:template match="cat:uri" mode="toc-mode">
+		<li><a href="{substring-after(@name, $serverName)}"><xsl:value-of select="@name" /></a></li>
 	</xsl:template>
 
-	<xsl:template match="namespace[not(schemaLocation)]" mode="toc-mode">
-		<li><xsl:value-of select="@url" /></li>
+	<xsl:template match="cat:uri[not(@uri)]" mode="toc-mode">
+		<li><xsl:value-of select="@name" /></li>
 	</xsl:template>
 
 
-	<xsl:template match="schemaLocation">
+	<xsl:template match="@uri">
 		<a href="{.}" target="_blank" title="Open schema in new browser"><xsl:value-of select="." /></a>
 	</xsl:template>
 
