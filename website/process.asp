@@ -31,7 +31,7 @@ var strResource = String(oSrv("SCRIPT_NAME")).replace(/\/index.asp/, "");
 var strNamespace = "http://" + strServername + strResource;
 var strYear = new Date().getFullYear();
 
-var oXML = new XMLObject("/namespaces.xml", "/namespace-transform.xsl", XMLOBJ_USE_XSLTEMPLATE | XMLOBJ_NO_TRANSFORM);
+var oXML = new XMLObject("/catalog.xml", "/namespace-transform.xsl", XMLOBJ_USE_XSLTEMPLATE | XMLOBJ_NO_TRANSFORM);
 
 oXML.addParameter("namespace", strNamespace);
 oXML.addParameter("currentYear", strYear);
