@@ -112,7 +112,7 @@
 
 
 	<xsl:template match="@uri">
-		<a href="{.}" target="_blank" title="Open schema in new browser"><xsl:value-of select="." /></a>
+		<a href="{substring-after(., '.')}" target="_blank" title="Open schema in new browser"><xsl:value-of select="concat($schemaServer, substring-after(., './'))" /></a>
 	</xsl:template>
 
 <!-- XMLSchema templates -->
