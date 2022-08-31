@@ -5,9 +5,10 @@
 	Created: 2002-08-24
 	Description:
 		XMLSchema for the hyperlinks XML format.
-	
+
 	Revisions:
 		2020-04-18: Updated to include the `<group>` element.
+		2022-08-31: Updated to add an `order` attribute
 -->
 <xsd:schema
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -82,6 +83,7 @@
 				</xsd:simpleType>
 			</xsd:attribute>
 			<xsd:attribute name="owner" type="xsd:string" use="optional" />
+			<xsl:attribute name="order" type="xsd:integer" use="optional" />
 		</xsd:complexType>
 	</xsd:element>
 
@@ -105,5 +107,5 @@
 	<xsd:element name="name" type="xsd:string" />
 	<xsd:element name="url" type="xsd:anyURI" />
 	<xsd:element name="description" type="xsd:string" />
-		
+
 </xsd:schema>
