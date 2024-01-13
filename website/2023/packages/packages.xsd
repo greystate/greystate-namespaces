@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	File:    packages.xsd
+	Author:  Chriztian Steinmeier
+	Created: 2023-01-04
+	Description:
+		XMLSchema for the packages XML format.
+
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2023/packages"
+	xmlns="http://xmlns.greystate.dk/2023/packages"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				An XML application for keeping track of (Umbraco) packages.
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix is <var>pkg</var> e.g. <code>&lt;pkg:packages&gt;...&lt;/pkg:packages&gt;</code>
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->
+	<xsd:element name="packages">
+		<xsd:complexType>
+			<xsd:element ref="package" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="package">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					Contains the description for a single package.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="name" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="url" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="description" minOccurs="0" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

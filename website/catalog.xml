@@ -16,4 +16,6 @@
   <uri name="http://xmlns.greystate.dk/2020/hyperlinks" uri="./2020/hyperlinks/hyperlinks.xsd"/>
   <uri name="http://xmlns.greystate.dk/2020/movies" uri="./2020/movies/movies.xsd"/>
   <uri name="http://xmlns.greystate.dk/2022/wordles" uri="./2022/wordles/wordles.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2022/docset" uri="./2022/docset/docset.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2023/packages" uri="./2023/packages/packages.xsd"/>
 </catalog>

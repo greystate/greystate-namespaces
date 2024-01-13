@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	File:    docset.xsd
+	Author:  Chriztian Steinmeier
+	Created: 2022-04-19
+	Description:
+		XMLSchema for my docset XML format.
+
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2022/docset"
+	xmlns="http://xmlns.greystate.dk/2022/docset"
+>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd" />
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				This XML application defines the elements for my Quick References
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->
+	<xsd:element name="docset">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="element" minOccurs="0" maxOccurs="unbounded" />
+				<!-- <xsd:element ref="function" minOccurs="0" maxOccurs="unbounded" /> -->
+			</xsd:choice>
+			<xsd:attribute ref="xml:lang" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="element">
+		<xsd:simpleType>
+			<xsd:attribute name="name" type="xsd:QName" />
+		</xsd:simpleType>
+	</xsd:element>
+</xsd:schema>
