@@ -1,9 +1,9 @@
 {
   "com.CodeKitApp.Nova.codekitFolder" : "\/Users\/chriz\/Development\/src\/greystate-namespaces\/frontend",
-  "robb-j.xml.catalogFiles" : [
-    "\/Users\/chriz\/Development\/src\/greystate-namespaces\/website\/namespaces-catalog.xml"
-  ],
   "workspace.art_style" : 0,
   "workspace.color" : 2,
-  "workspace.name" : "Greystate Namespaces"
+  "workspace.name" : "Greystate Namespaces",
+  "xml.catalogs" : [
+    ""
+  ]
 }
