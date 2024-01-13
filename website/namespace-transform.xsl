@@ -116,8 +116,14 @@
 	</xsl:template>
 
 <!-- XMLSchema templates -->
+	<!-- Schema root -->
 	<xsl:template match="xsd:schema">
 		<xsl:apply-templates select="xsd:element | xsd:include" />
+	</xsl:template>
+
+	<!-- Root-level simpleType -->
+	<xsl:template match="xsd:schema/xsd:simpleType">
+		<!-- TODO: How do we show this? -->
 	</xsl:template>
 
 	<xsl:template match="xsd:include">
