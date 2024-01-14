@@ -20,7 +20,7 @@
 
 <!-- Parameters -->
 	<xsl:param name="namespace" select="'http://xmlns.greystate.dk/2022/wordles'" />
-	<xsl:param name="currentYear" select="'2009'" />
+	<xsl:param name="currentYear" select="'2024'" />
 
 <!-- Variables -->
 	<xsl:variable name="serverName">http://xmlns.greystate.dk</xsl:variable>
@@ -122,9 +122,9 @@
 	</xsl:template>
 
 	<!-- Root-level simpleType -->
-	<xsl:template match="xsd:schema/xsd:simpleType">
+	<!-- <xsl:template match="xsd:schema/xsd:simpleType"> -->
 		<!-- TODO: How do we show this? -->
-	</xsl:template>
+	<!-- </xsl:template> -->
 
 	<xsl:template match="xsd:include">
 		<xsl:apply-templates select="document(@schemaLocation)/xsd:schema" />
@@ -273,8 +273,12 @@
 	</xsl:template>
 
 	<xsl:template match="@type">
+		<xsl:variable name="typeName" select="." />
 		<xsl:choose>
 			<xsl:when test="$xsdPrefix != '' and starts-with(., $xsdPrefix)"><xsl:value-of select="concat($xsdOutputPrefix, substring-after(., $xsdPrefix))" /></xsl:when>
+			<xsl:when test="/xsd:schema/xsd:simpleType[@name = $typeName]">
+				<xsl:apply-templates select="/xsd:schema/xsd:simpleType[@name = $typeName]" />
+			</xsl:when>
 			<xsl:otherwise><xsl:value-of select="." /></xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -284,9 +288,9 @@
 		<xsl:if test="@minOccurs or @maxOccurs">
 			<xsl:choose>
 				<xsl:when test="@minOccurs = 0 and @maxOccurs = 'unbounded'"><b class="cardinality">*</b></xsl:when>
-				<xsl:when test="@minOccurs = 0 and @maxOccurs = 1"><b class="cardinality">?</b></xsl:when>
+				<xsl:when test="@minOccurs = 0 and (@maxOccurs = 1 or not(@maxOccurs))"><b class="cardinality">?</b></xsl:when>
 				<xsl:when test="@minOccurs = 1 and @maxOccurs = 1"></xsl:when>
-				<xsl:when test="@minOccurs = 1 and @maxOccurs = 'unbounded'"><b class="cardinality">+</b></xsl:when>
+				<xsl:when test="(@minOccurs = 1 or not(@minOccurs)) and @maxOccurs = 'unbounded'"><b class="cardinality">+</b></xsl:when>
 				<xsl:otherwise><xsl:value-of select="concat('{', @minOccurs, '-', @maxOccurs, '}')" /></xsl:otherwise>
 			</xsl:choose>
 		</xsl:if>
