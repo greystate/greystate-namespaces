@@ -24,6 +24,7 @@
 
 <!-- Variables -->
 	<xsl:variable name="serverName">http://xmlns.greystate.dk</xsl:variable>
+	<xsl:variable name="serverURL">https://xmlns.greystate.dk</xsl:variable>
 	<xsl:variable name="schemaServer" select="concat($serverName, '/')" />
 
 	<xsl:variable name="schemaElement" select="document(substring-after(/cat:catalog/cat:uri[@name = $namespace]/@uri, './'))/xsd:schema" />
@@ -71,7 +72,7 @@
 	</xsl:template>
 
 	<xsl:template match="cat:uri">
-		<h2>{<code><a href="{$serverName}"><xsl:value-of select="$serverName" /></a><xsl:value-of select="substring-after(@name, $serverName)" /></code>}</h2>
+		<h2>{<code><a href="{$serverURL}"><xsl:value-of select="$serverName" /></a><xsl:value-of select="substring-after(@name, $serverName)" /></code>}</h2>
 		<dl>
 			<dt>Description</dt>
 			<dd>
