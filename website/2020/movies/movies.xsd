@@ -29,11 +29,11 @@
 	<!-- Root element -->
 	<xsd:element name="movies">
 		<xsd:complexType>
-			<xsd:sequence>
+			<xsd:choice>
 				<xsd:element ref="movie" minOccurs="0" maxOccurs="unbounded" />
 				<xsd:element ref="series" minOccurs="0" maxOccurs="unbounded" />
 				<xsd:element ref="collection" minOccurs="0" maxOccurs="unbounded" />
-			</xsd:sequence>
+			</xsd:choice>
 			<xsd:attribute ref="xml:lang" />
 		</xsd:complexType>
 	</xsd:element>
