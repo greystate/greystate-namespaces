@@ -248,6 +248,11 @@
 		<span class="typeref">}</span>
 	</xsl:template>
 
+	<xsl:template match="xsd:restriction[xsd:minInclusive]">
+		<span class="typeref"><xsl:value-of select="@base" />{</span>
+		<span class="enumValue"><xsl:value-of select="xsd:minInclusive/@value" />-<xsl:value-of select="xsd:maxInclusive/@value" /></span>
+		<span class="typeref">}</span>
+	</xsl:template>
 
 	<xsl:template match="xsd:attribute[@type]">
 		<xsl:text> </xsl:text>
