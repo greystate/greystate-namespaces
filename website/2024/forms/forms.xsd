@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	File:    forms.xsd
+	Author:  Chriztian Steinmeier
+	Created: 2024-01-12
+	Description:
+		XMLSchema for the forms XML format.
+-->
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2024/forms"
+	xmlns="http://xmlns.greystate.dk/2024/forms"
+>
+
+	<!-- Main description -->
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				An XML application for defining one or more forms.
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix is <var>frm</var> eg. <code>&lt;frm:forms&gt;...&lt;/frm:forms&gt;</code>
+			</p>
+		</xs:documentation>
+	</xs:annotation>
+
+	<!-- Custom types -->
+	<xs:group name="formElements">
+		<xs:choice>
+			<xs:element ref="textfield" />
+			<xs:element ref="secret" />
+			<xs:element ref="group" />
+			<xs:element ref="data" />
+			<xs:element ref="picker" />
+			<xs:element ref="divider" />
+			<xs:element ref="toggle" />
+			<xs:element ref="text" />
+		</xs:choice>
+	</xs:group>
+
+	<xs:simpleType name="booleanYesNo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="yes" />
+			<xs:enumeration value="no" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Root element -->
+	<xs:element name="forms">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="form" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="form">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="name" minOccurs="0" />
+				<xs:group ref="formElements" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="xs:string" />
+			<xs:attribute name="action" use="required" type="xs:anyURI" />
+			<xs:attribute name="allow-default" type="booleanYesNo" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="name" type="xs:string" />
+
+	<xs:element name="group">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="formElements" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="collapse" type="booleanYesNo" />
+			<xs:attribute name="legend" use="required" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="textfield">
+		<xs:complexType>
+			<xs:attribute name="name" use="required" type="xs:string" />
+			<xs:attribute name="label" use="optional" type="xs:string" />
+			<xs:attribute name="placeholder" use="optional" type="xs:string" />
+			<xs:attribute name="autofocus" type="booleanYesNo" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="data">
+		<xs:complexType>
+			<xs:attribute name="name" use="required" type="xs:string" />
+			<xs:attribute name="value" use="required" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="secret">
+		<xs:complexType>
+			<xs:attribute name="allow-storage" use="optional" type="booleanYesNo" />
+			<xs:attribute name="label" use="required" type="xs:string" />
+			<xs:attribute name="name" use="required" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="picker">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="option" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="xs:string" />
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="single" />
+						<xs:enumeration value="multiple" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="toggle">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" use="required" type="xs:string" />
+					<xs:attribute name="value" use="required" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="option">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="value" use="optional" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="divider">
+		<xs:complexType/>
+	</xs:element>
+
+	<xs:element name="text">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<p xmlns="http://www.w3.org/1999/xhtml">
+					This can be used to include regular HTML content in the form,
+					e.g. for explanatory information etc.
+				</p>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+</xs:schema>
