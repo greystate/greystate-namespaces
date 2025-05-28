@@ -1,0 +1,27 @@
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2024/social"
+	xmlns="http://xmlns.greystate.dk/2024/social"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Temporary namespace for identifying social profile URLs in XML (e.g. RSS).
+				Use any of the defined elements to add social profile links to a resource.
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix is <var>social</var> e.g. <code>&lt;social:mastodon&gt;...&lt;/social:mastodon&gt;</code>
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Elements -->
+	<xsd:element name="mastodon" type="xsd:anyURI" />
+	<xsd:element name="instagram" type="xsd:anyURI" />
+	<xsd:element name="facebook" type="xsd:anyURI" />
+	<xsd:element name="linkedin" type="xsd:anyURI" />
+	<xsd:element name="twitter" type="xsd:anyURI" />
+
+</xsd:schema>
