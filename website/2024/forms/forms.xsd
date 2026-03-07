@@ -12,6 +12,8 @@
 	xmlns="http://xmlns.greystate.dk/2024/forms"
 >
 
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+
 	<!-- Main description -->
 	<xs:annotation>
 		<xs:documentation xml:lang="en">
@@ -45,6 +47,12 @@
 		</xs:restriction>
 	</xs:simpleType>
 
+	<xs:simpleType name="accesskey">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[\w]" />
+		</xs:restriction>
+	</xs:simpleType>
+
 	<!-- Root element -->
 	<xs:element name="forms">
 		<xs:complexType>
@@ -60,9 +68,13 @@
 				<xs:element ref="name" minOccurs="0" />
 				<xs:group ref="formElements" minOccurs="0" maxOccurs="unbounded" />
 			</xs:sequence>
-			<xs:attribute name="id" use="required" type="xs:string" />
+			<xs:attribute name="key" use="optional" type="accesskey" />
+			<xs:attribute name="id" use="required" type="xs:ID" />
 			<xs:attribute name="action" use="required" type="xs:anyURI" />
 			<xs:attribute name="allow-default" type="booleanYesNo" />
+			<xs:attribute name="default-template" type="xs:string" />
+			<xs:attribute name="default-from" type="xs:IDREF" />
+			<xs:attribute ref="xml:lang" />
 		</xs:complexType>
 	</xs:element>
 
@@ -82,6 +94,7 @@
 		<xs:complexType>
 			<xs:attribute name="name" use="required" type="xs:string" />
 			<xs:attribute name="label" use="optional" type="xs:string" />
+			<xs:attribute name="template" use="optional" type="xs:string" />
 			<xs:attribute name="placeholder" use="optional" type="xs:string" />
 			<xs:attribute name="autofocus" type="booleanYesNo" use="optional" />
 		</xs:complexType>
@@ -125,6 +138,7 @@
 				<xs:extension base="xs:string">
 					<xs:attribute name="name" use="required" type="xs:string" />
 					<xs:attribute name="value" use="required" type="xs:string" />
+					<xs:attribute name="checked" use="optional" type="booleanYesNo" />
 				</xs:extension>
 			</xs:simpleContent>
 		</xs:complexType>
