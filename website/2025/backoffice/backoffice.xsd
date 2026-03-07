@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	File:    backoffice.xsd
+	Author:  Chriztian Steinmeier
+	Created: 2025-05-27
+	Description:
+		XMLSchema for a backoffice XML format.
+
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.sk/2025/backoffice"
+	xmlns="http://xmlns.greystate.sk/2025/backoffice"
+>
+
+	<!-- Main description -->
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				An XML application for mocking up the structure of an Umbraco Backoffice.
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix is <var>doc</var> e.g. <code>&lt;doc:backoffice&gt;...&lt;/doc:backoffice&gt;</code>
+			</p>
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<!-- Root element -->
+	<xsd:element name="backoffice">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="composition" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="doctype" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="doctype">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="composition" type="compositionImport" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="tab" minOccurs="0" maxOccurs="unbounded" />
+				<xsd:element ref="group" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="compositionImport">
+		<xsd:attribute name="src" minOccurs="1" maxOccurs="1" />
+	</xsd:complexType>
+
+</xsd:schema>
