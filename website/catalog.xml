@@ -21,4 +21,6 @@
   <uri name="http://xmlns.greystate.dk/2024/forms" uri="./2024/forms/forms.xsd"/>
   <uri name="http://xmlns.greystate.dk/2024/social" uri="./2024/social/social.xsd"/>
   <uri name="http://xmlns.greystate.dk/2025/tickers" uri="./2025/tickers/tickers.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2025/backoffice" uri="./2025/backoffice/backoffice.xsd"/>
+  <uri name="http://xmlns.greystate.dk/2026/references" uri="./2026/references/references.xsd"/>
 </catalog>
