@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	File:    references.xsd
+	Author:  Chriztian Steinmeier
+	Created: 2026-03-06
+	Description:
+		XMLSchema for the references XML format.
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://xmlns.greystate.dk/2026/references"
+	xmlns="http://xmlns.greystate.dk/2026/references">
+
+	<!-- Main description -->
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				An XML application for a references log; storing code snippets, links and notes.
+			</p>
+			<p xmlns="http://www.w3.org/1999/xhtml">
+				Typical prefix is <var>ref</var> e.g. <code>&lt;ref:references&gt;...&lt;/ref:references&gt;</code>
+			</p>
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:element name="references">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="item" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="item">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="codesnippet"/>
+					<xs:element ref="description"/>
+				</xs:choice>
+				<xs:choice minOccurs="0">
+					<xs:element ref="info"/>
+					<xs:element ref="link"/>
+					<xs:element ref="note"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="tags" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="codesnippet">
+		<xs:complexType mixed="true">
+			<xs:attribute name="lang" use="required" type="xs:NCName"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="description" type="xs:string" />
+
+	<xs:element name="info" type="xs:string" />
+
+	<xs:element name="link">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="name" />
+				<xs:element ref="url" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="name" type="xs:string" />
+
+	<xs:element name="url" type="xs:anyURI" />
+
+	<xs:element name="note">
+		<xs:complexType mixed="true">
+			<xs:attribute name="title" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
